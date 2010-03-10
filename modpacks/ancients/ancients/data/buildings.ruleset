@@ -82,7 +82,7 @@ reqs	=
     { "type", "name", "range"
       "Tech", "Warrior Code", "Player"
     }
-graphic	= "b.barracks"
+graphic	= "b.barracks_i"
 graphic_alt	= "-"
 obsolete_by	= "Tactics"
 replaced_by	= "Barracks II"
@@ -106,8 +106,8 @@ reqs	=
     { "type", "name", "range"
       "Tech", "Tactics", "Player"
     }
-graphic	= "b.barracks"
-graphic_alt	= "-"
+graphic	= "b.barracks_ii"
+graphic_alt	= "b.barracks_i"
 obsolete_by	= "Dark Age"
 replaced_by	= "Barracks III"
 build_cost	= 40
@@ -130,8 +130,8 @@ reqs	=
     { "type", "name", "range"
       "Tech", "Chivalry", "Player"
     }
-graphic	= "b.barracks"
-graphic_alt	= "-"
+graphic	= "b.barracks_iii"
+graphic_alt	= "b.barracks_i"
 obsolete_by	= "None"
 build_cost	= 40
 upkeep		= 1
@@ -308,7 +308,7 @@ genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
       "Tech", "Sailing", "Player"
-      "Terrain", "Ocean", "Adjacent"
+      "TerrainClass", "Oceanic", "Adjacent"
     }
 graphic	= "b.fish_market"
 graphic_alt	= "b.harbour"
@@ -369,7 +369,7 @@ genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
       "Tech", "Navigation", "Player"
-      "Terrain", "Ocean", "Adjacent"
+      "TerrainClass", "Oceanic", "Adjacent"
     }
 graphic	= "b.harbour"
 graphic_alt	= "b.offshore_platform"
@@ -423,7 +423,7 @@ genus		= "Improvement"
 reqs	=
     { "type", "name", "range"
       "Tech", "Construction", "Player"
-      "Terrain", "Ocean", "Adjacent"
+      "TerrainClass", "Oceanic", "Adjacent"
     }
 graphic	= "b.war_harbour"
 graphic_alt	= "b.port_facility"
@@ -621,7 +621,7 @@ genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
       "Tech", "Sailing", "Player"
-      "Terrain", "Ocean", "Adjacent"
+      "TerrainClass", "Oceanic", "Adjacent"
     }
 graphic	= "b.lighthouse"
 graphic_alt	= "-"
@@ -642,7 +642,7 @@ genus		= "GreatWonder"
 reqs	=
     { "type", "name", "range"
       "Tech", "Navigation", "Player"
-      "Terrain", "Ocean", "Adjacent"
+      "TerrainClass", "Oceanic", "Adjacent"
     }
 graphic	= "b.sataspes_expedition"
 graphic_alt	= "b.magellans_expedition"
@@ -730,10 +730,3 @@ This is not a normal improvement.  Instead, setting a city's\
  production to Coinage means its shield production is\
  converted to tax output (money, coins!).\
 ")
-
-
-[b_special]
-
-; Special values:
-
-default="Coinage"

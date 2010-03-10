@@ -14,6 +14,10 @@
 description="Ancients unit_type data for Freeciv"
 options="1.9"
 
+[flags]
+; Names for custom unit type flags.
+; names =
+
 [veteran_system]
 ; What are the names of the levels?
 veteran_names = _("green"), _("veteran"), _("hardened"), _("elite")
@@ -29,14 +33,67 @@ veteran_power_fact = 100, 150, 175, 200
 ; performing useful work (per turn)
 veteran_work_raise_chance = 5, 3, 1, 0
 
-; The chances of a trireme being lost at sea when not adjacent to a
-; land tile.
-veteran_highseas_loss_pct = 50, 25, 5, 0
-
 ; The additional number of movement points granted for different veteran
 ; levels.  These are thirds of points, so to increase movement
 ; by a whole point 3 must be specified.
 veteran_move_bonus = 0, 0, 0, 0
+
+; Unit classes
+; The number can be variable, up to 32
+; When adding new classes, remember to check effects.ruleset also.
+; Eg. if you divide class 'Land' to two separate classes, you may
+; want add effect giving City Walls defence bonus against new class
+; too.
+;
+; The actual tag used (the * in [unitclass_*]) does not matter, except
+; it must be unique within this file, and it may be used in debug
+; output when reading this file.
+;
+; ** Fields **
+;
+; name          = Name as used in other rulesets
+; move_type     = Where unit moves; Land, Sea or Both.
+; min_speed     = Minimum speed after damage and effects
+; hp_loss_pct   = Hitpoints lost each turn if unit not in city or airbase
+; hut_behavior  = What happens to huts when unit enters tile: "Normal", "Nothing" or
+;                 "Frighten"
+; flags         = List of unit class flags
+;
+; ** Unit class Flags **
+;
+; "TerrainSpeed"   = Units use terrain specific speed
+; "TerrainDefense" = Units gain defense bonus from terrain
+; "DamageSlows"    = Damages units are slowed down
+; "CanOccupyCity"  = Military units of this class can occupy enemy cities
+; "Missile"        = Unit is destroyed when it attacks
+; "RoadNative"     = Road tiles are always considered native terrain
+; "RiverNative"    = River tiles are always considered native terrain
+; "BuildAnywhere"  = Unit can be built even in the middle of non-native terrain
+; "Unreachable"    = Unit can be attacked only by units explicitly listing this class as target
+;                    or on city or airbase
+; "CollectRansom"  = Unit can collect ransom when killing lone barbarian leader
+; "ZOC"            = Unit is subject to ZOC rules. Unit type flag "IgZOC" can
+;                    override this
+; "CanFortify"     = Unit can fortify at land squares
+; "CanPillage"     = Unit can pillage tile infrastructure
+; "DoesntOccupyTile"  = Even if this kind of enemy unit is on tile, cities can
+;                       still work that tile
+
+[unitclass_land]
+name          = _("Land")
+move_type     = "Land"
+min_speed     = 1
+hp_loss_pct   = 0
+flags         = "TerrainSpeed", "DamageSlows", "CanOccupyCity", "BuildAnywhere",
+                "CollectRansom", "ZOC", "CanFortify", "CanPillage",
+                "TerrainDefense"
+
+[unitclass_sea]
+name          = _("Sea")
+move_type     = "Sea"
+min_speed     = 2
+hp_loss_pct   = 0
+flags         = "TerrainSpeed", "DamageSlows"
 
 ; Below: The individual units, one per section.
 ;
@@ -64,12 +121,14 @@ veteran_move_bonus = 0, 0, 0, 0
 ; impr_req	= required city improvement, names from buildings.ruleset
 ; gov_req       = required government, names from governments.ruleset
 ; obsolete_by   = can be upgraded to and made obsolete by another unit by name
-; class         = "Land", "Sea", "Air", "Helicopter", "Missile" or "Nuclear"
+; class         = One of the classes listed above
 ; transport_cap = Number of units (ground, or air/missiles, depending on flags)
 ; fuel          = number of turns air units can fly before they crash. For
 ;                 barbarians this is used as lifetime instead. If this is zero,
 ;                 the unit has unlimited fuel, despite flying.
 ; uk_*          = upkeep costs, these are used as base values in the game
+; cargo         = Unit classes this unit can transport
+; city_size     = Initial size of the cities Settlers type unit builds
 ; flags         = special flag strings
 ; roles         = special role strings
 ; sound_move	= optional sound effect when the unit moves
@@ -85,33 +144,26 @@ veteran_move_bonus = 0, 0, 0, 0
 ;
 ; "HelpWonder"	= can help build wonders
 ; "TradeRoute"	= can establish trade routes
-; "Missile"	= (air only) some buildings and units have higher defence 
-;                  against these
-; "IgZOC"	= (land only) ignore Zones of Control (ZOC)
+; "IgZOC"       = ignore Zones of Control (ZOC) even if unit class has "ZOC" flag
 ; "NonMil"	= a non-military unit, does not cause unhappiness
 ; "IgTer"	= ignore terrain/road/rail, treat every tile as 1/3 move cost
-; "Carrier"	= can transport air and missile units, but not land units
-; "Missile_Carrier" = can transport only missiles, but no aircraft or land units
 ; "OneAttack"	= can only make a single attack, regardless of movement points
 ; "Pikemen"	= double defence power against "Horse" flag units
 ; "Horse"	= (no effect)
 ; "IgWall"	= ignore effect of city walls
 ; "FieldUnit"	= cause unhappiness even when not being aggressive
-; "AEGIS"	= fivefold increased defence against air attacks and missiles
-; "Fighter"	= can attack air units (no other units can normally do this)
+; "AEGIS"       = fivefold increased defence against "AirUnit" attacks
 ; "Marines"	= (land only) can attack from transports
 ; "Partial_Invis" = visible only to adjancent units; does not hide transported
 ;		  units other than missiles
 ; "Settlers"	= can irrigate and build roads
 ; "Diplomat"	= can do diplomat actions (see diplchance server option)
 ; "Spy"		= can do poison and sabotage, _must_ be "Diplomat" also
-; "Trireme"	= (sea only) sinks on high seas, lots of special rules
+; "Trireme"	= (sea only) cannot leave shoreline
 ; "Nuclear"	= nuke!
 ; "Transform"	= can transform terrain
 ; "Paratroopers"= (land only) can paradrop
-; "Airbase"	= (land only) can produce airbases
 ; "Cities"	= can disband to produce a city
-; "IgTired"	= ignore tired penalty when attacking
 ; "No_Land_Attack" = (sea only) cannot attack targets on land
 ; "AddToCity"	= can disband to add a single point of population to a city
 ;		  (see cities.ruleset for limitation of this ability)
@@ -145,6 +197,11 @@ veteran_move_bonus = 0, 0, 0, 0
 ; "BadCityDefender"	= if attacked while in a city, firepower is set to 1
 ;		  and firepower of attacker is doubled (the Pearl Harbour
 ;                 rule)
+; "Helicopter"  = defends very badly against "Fighter" units
+; "AirUnit"     = very bad at attacking "AEGIS" units
+; "Fighter"     = good attacker against "Helicopter" units
+; "BarbarianOnly" = only barbarians can build this unit
+; "Shield2Gold" = Switch from shield upkeep to gold upkeep possible
 ;
 ; Following flag strings require extra fields:
 ;  "Paratroopers"
@@ -227,7 +284,7 @@ Use settlers to found cities.\
 ")
 
 [unit_worker]
-name          = _("Workers")
+name          = _("?unit:Workers")
 class         = "Land"
 tech_req      = "Surveying"
 obsolete_by   = "None"
@@ -411,7 +468,7 @@ Use explorers to survey the lands around your early settlements, so\
 ")
 
 [unit_leader]
-name          = _("Leader")
+name          = _("?unit:Leader")
 class         = "Land"
 tech_req      = "None"
 obsolete_by   = "None"
@@ -1367,6 +1424,7 @@ uk_happy      = 1
 uk_shield     = 1
 uk_food       = 0
 uk_gold       = 0
+cargo         = "Land"
 flags         = "Trireme", "BadCityDefender"
 roles         = "Ferryboat"
 helptext      = _("\
@@ -1402,6 +1460,7 @@ uk_happy      = 1
 uk_shield     = 1
 uk_food       = 0
 uk_gold       = 0
+cargo         = "Land"
 flags         = "Trireme", "BadCityDefender", "FieldUnit"
 roles         = "Ferryboat", "BarbarianBoat", "BarbarianBuildTech"
 helptext      = _("\
@@ -1440,6 +1499,7 @@ uk_happy      = 1
 uk_shield     = 1
 uk_food       = 0
 uk_gold       = 0
+cargo         = "Land"
 flags         = "Trireme", "BadCityDefender"
 roles         = "Ferryboat"
 helptext      = _("\
@@ -1476,7 +1536,8 @@ uk_happy      = 1
 uk_shield     = 1
 uk_food       = 0
 uk_gold       = 0
-flags         = "Trireme", "BadCityDefender"
+cargo         = "Land"
+flags         = "BadCityDefender"
 roles         = "Ferryboat"
 helptext      = _("\
 This unit represents a small flotilla of heavy merchant vessels such\
@@ -1513,7 +1574,8 @@ uk_happy      = 1
 uk_shield     = 1
 uk_food       = 0
 uk_gold       = 0
-flags         = "Trireme", "BadCityDefender", "FieldUnit"
+cargo         = "Land"
+flags         = "BadCityDefender", "FieldUnit"
 roles         = "Ferryboat", "BarbarianBoat", "BarbarianBuildTech", "AttackFast", "Hunter"
 helptext      = _("\
 This unit represents a small flotilla of longboats of the Viking\
@@ -1549,7 +1611,6 @@ defense       = 3
 hitpoints     = 20
 firepower     = 4
 move_rate     = 5
-vision_range  = 1
 vision_radius_sq = 2
 transport_cap = 1
 fuel          = 0
@@ -1557,7 +1618,8 @@ uk_happy      = 1
 uk_shield     = 1
 uk_food       = 0
 uk_gold       = 0
-flags         = "Trireme", "BadCityDefender", "FieldUnit"
+cargo         = "Land"
+flags         = "BadCityDefender", "FieldUnit"
 roles         = "Ferryboat", "AttackFast", "Hunter"
 helptext      = _("\
 This unit represents a small flotilla of triremes, a type of ancient\

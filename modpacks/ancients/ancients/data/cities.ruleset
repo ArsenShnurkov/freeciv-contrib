@@ -50,23 +50,26 @@ angry_citizens = 1              ; set to zero to disable angry citizens
 celebrate_size_limit = 3        ; cities >= can celebrate
 
 changable_tax = 1		; set to zero to disallow changing of tax rates
-
 ;forced_science = 0		; set these fields when changeable_tax is turned off
 ;forced_luxury = 100
 ;forced_gold = 0
+
+vision_reveal_tiles = 0         ; civ1 & 2 default zero
 
 ;
 ; City styles define the way cities are drawn
 ;
 ; graphic     = group of tiles to use, see cities spec for
 ;               more info on city tiles
+; oceanic_graphic      = group of tiles to use for oceanic cities. If this
+;                        is omitted, same graphics as for land cities is used
 ; citizens_graphic     = group of citizens tiles to use, see citizens/small
 ;                        spec for more info on citizens tiles
 ; reqs        = requirements for this city style (see README.effects)
 ; replaced_by = which style replaced this one
 
 [citystyle_european]
-name        = _("European")
+name        = _("?citystyle:European")
 graphic     = "city.european"
 graphic_alt = "-"
 citizens_graphic     = "ancient"
@@ -75,7 +78,7 @@ citizens_graphic_alt = "generic"
 replaced_by = "Renaissance"
 
 [citystyle_classical]
-name        = _("Classical")
+name        = _("?citystyle:Classical")
 graphic     = "city.classical"
 graphic_alt = "-"
 citizens_graphic     = "ancient"
@@ -84,7 +87,7 @@ citizens_graphic_alt = "generic"
 replaced_by = "Renaissance"
 
 ;[citystyle_mesopotamian]
-;name        = _("Mesopotamian")
+;name        = _("?citystyle:Mesopotamian")
 ;graphic     = "city.mesopotamian"
 ;graphic_alt = "city.classical"
 ;citizens_graphic     = "ancient"
@@ -93,7 +96,7 @@ replaced_by = "Renaissance"
 ;replaced_by = "Renaissance"
 
 [citystyle_arabian]
-name        = _("Arabian")
+name        = _("?citystyle:Arabian")
 graphic     = "city.arabian"
 graphic_alt = "city.classical"
 citizens_graphic     = "ancient"
@@ -102,7 +105,7 @@ citizens_graphic_alt = "generic"
 replaced_by = "Renaissance"
 
 ;[citystyle_tropical]
-;name        = _("Tropical")
+;name        = _("?citystyle:Tropical")
 ;graphic     = "city.tropical"
 ;graphic_alt = "city.european"
 ;citizens_graphic     = "ancient"
@@ -111,7 +114,7 @@ replaced_by = "Renaissance"
 ;replaced_by = "Renaissance"
 
 [citystyle_precolumbian]
-name        = _("Precolumbian")
+name        = _("?citystyle:Precolumbian")
 graphic     = "city.precolumbian"
 graphic_alt = "city.tropical"
 citizens_graphic     = "ancient"
@@ -120,7 +123,7 @@ citizens_graphic_alt = "generic"
 replaced_by = "Renaissance"
 
 [citystyle_african]
-name        = _("African")
+name        = _("?citystyle:African")
 graphic     = "city.african"
 graphic_alt = "city.tropical"
 citizens_graphic     = "ancient"
@@ -129,7 +132,7 @@ citizens_graphic_alt = "generic"
 replaced_by = "Renaissance"
 
 [citystyle_asian]
-name        = _("Asian")
+name        = _("?citystyle:Asian")
 graphic     = "city.asian"
 graphic_alt = "city.classical"
 citizens_graphic     = "ancient"
@@ -138,7 +141,7 @@ citizens_graphic_alt = "generic"
 replaced_by = "Renaissance"
 
 [citystyle_babylonian]
-name        = _("Babylonian")
+name        = _("?citystyle:Babylonian")
 graphic     = "city.babylonian"
 graphic_alt = "city.classical"
 citizens_graphic     = "ancient"
@@ -147,7 +150,7 @@ citizens_graphic_alt = "generic"
 replaced_by = "Renaissance"
 
 ;[citystyle_barbarian]
-;name        = _("Barbarian")
+;name        = _("?citystyle:Barbarian")
 ;graphic     = "city.barbarian"
 ;graphic_alt = "city.european"
 ;citizens_graphic     = "ancient"
@@ -156,7 +159,7 @@ replaced_by = "Renaissance"
 ;replaced_by = "Renaissance"
 
 [citystyle_celtic]
-name        = _("Celtic")
+name        = _("?citystyle:Celtic")
 graphic     = "city.celtic"
 graphic_alt = "city.european"
 citizens_graphic     = "ancient"
@@ -165,7 +168,7 @@ citizens_graphic_alt = "generic"
 replaced_by = "Renaissance"
 
 [citystyle_renaissance]
-name        = _("Renaissance")
+name        = _("?citystyle:Renaissance")
 graphic     = "city.industrial"
 graphic_alt = "-"
 citizens_graphic     = "renaissance"

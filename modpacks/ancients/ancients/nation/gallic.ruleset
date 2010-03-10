@@ -28,7 +28,7 @@ init_techs=""
 init_buildings=""
 init_government="Despotism"
 init_units=""
-civilwar_nations="british", "celtiberian", "frankish"
+civilwar_nations="british", "frankish"
 
 ; City names from various articles on Wikipedia:
 ; http://en.wikipedia.org/wiki/Category:Ancient_Gauls

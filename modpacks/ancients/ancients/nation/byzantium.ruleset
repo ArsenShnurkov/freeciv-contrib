@@ -33,7 +33,7 @@ init_units=""
 
 ; Byzantium was the cultural successor-empire of Hellenic culture
 conflicts_with = "hellene"
-civilwar_nations = "hellene", "arab"
+civilwar_nations = "arab"
 
 cities =
  "Constantinople (ocean)",

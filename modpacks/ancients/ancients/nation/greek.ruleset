@@ -20,7 +20,7 @@ init_techs=""
 init_buildings=""
 init_government="Despotism"
 init_units=""
-civilwar_nations="macedonian", "byzantium", "persian", "egyptian"
+civilwar_nations="macedonian", "byzantine", "persian", "egyptian"
 
 cities =
 ; Early cities

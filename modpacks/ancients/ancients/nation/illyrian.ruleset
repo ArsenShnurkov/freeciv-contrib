@@ -34,7 +34,7 @@ init_techs=""
 init_buildings=""
 init_government="Despotism"
 init_units=""
-civilwar_nations = "macedonian", "thracian", "roman", "hellene"
+civilwar_nations = "macedonian", "thracian", "roman"
 
 cities =
   "Scodra (hills, plains, river, !ocean)",	;-400 42:04N 19:30E |Scutari|Shkodra|Shkoder

@@ -1,8 +1,5 @@
 # Server commands to make Ancients Freeciv rules
 #
-# You don't need this when starting the server but it can be used to restore
-# rules after they've been changed.
-#
 
 rulesetdir ancients/data
 

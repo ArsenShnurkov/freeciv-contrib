@@ -152,12 +152,3 @@ pixel_border = 0
 tiles = { "row", "column", "tag"
 0, 0, "explode.nuke"
 }
-
-
-
-
-
-
-
-
-

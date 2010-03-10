@@ -85,7 +85,14 @@ Known Bugs:
 
 ---
 
-About this version
+ChangeLog
+
+
+Ancients for Freeciv r15801
+
+Updated for Freeciv development version (what will be 2.2) revision 15801
+* Some ships can leave shoreline
+* Calendar speed about halved
 
 Ancients 2.1.0-2 (preview)
 
@@ -131,4 +138,3 @@ The rule-set has a Web site at:
 
 Feel free to send feedback to the maintainer, or to discuss the rule-set
 on the Freeciv mailing list.
-

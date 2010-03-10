@@ -20,6 +20,10 @@ options="1.9"
 ; root_req      = advance required before acquiring this one, inherited
 ;                 by all techs that require this tech in turn unless
 ;                 "None" is given explicitly
+; root_req      = tech required before acquiring this tech, by any
+;     means, inherited by all techs that require this tech in turn unless
+;     "None" is given here explicitly; and you can make a tech available
+;     only through the init_tech of a nation by making it root_req itself.
 ; flags         = special flag strings
 ; graphic       = icon for technology
 ; graphic_alt   = alternate icon
@@ -39,10 +43,8 @@ options="1.9"
 ; "Bridge"   = "Settler" unit types can build bridges over rivers
 ; "Railroad" = "Settler" unit types can build rail roads
 ; "Farmland" = "Settler" unit types can build farmland
-; "Fortress" = "Settler" unit types can build fortress
 ; "Population_Pollution_Inc" = Increase the pollution factor created by
-;                              popultaion by one
-; "Airbase" = "Airbase" unit types can build Airbases
+;                              population by one
 ; "Build_Airborne" = from now on can build air units (for use by AI)
 
 [advance_astronomy]
@@ -97,7 +99,7 @@ graphic_alt = "-"
 name     = _("Construction")
 req1     = "Engineering"
 req2     = "Tackle"
-flags    = "Fortress"
+flags    = ""
 graphic     = "a.construction"
 graphic_alt = "-"
 
@@ -639,13 +641,13 @@ flags    = ""
 graphic     = "a.tackle"
 graphic_alt = "-"
 
-[advance_torsion_catapult]
-name = _("Torsion Catapult")   ;***allow?***
-req1 = "Never"
-req2 = "Never"
-flags    = ""
-graphic     = "a.torsion_catapult"
-graphic_alt = "-"
+;[advance_torsion_catapult]
+;name = _("Torsion Catapult")   ;***allow?***
+;req1 = "Never"
+;req2 = "Never"
+;flags    = ""
+;graphic     = "a.torsion_catapult"
+;graphic_alt = "-"
 
 [advance_usury]
 name = _("Usury")

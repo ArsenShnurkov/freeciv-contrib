@@ -7,7 +7,7 @@ description="Ancients governments data for Freeciv"
 options="1.9"
 
 [governments]
-when_anarchy="Anarchy"
+during_revolution="Anarchy"
 
 ; Below: The individual government types, one per section.
 ;
@@ -163,7 +163,6 @@ reqs = { "type", "name", "range"
        }
 graphic     = "gov.republic"
 graphic_alt = "-"
-flags       = "Rapture_City_Growth"
 
 ruler_male_title = _("King")
 ruler_female_title = _("Queen")

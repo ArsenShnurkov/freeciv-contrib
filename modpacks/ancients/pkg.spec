@@ -1,5 +1,5 @@
-# Ancients 2.1
-2.1.0-2
+# Ancients Modpack
+2.2.0-0+cazfi-r15906
 
 ancients/
 ancients.serv

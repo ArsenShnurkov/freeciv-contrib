@@ -97,7 +97,6 @@ match=1
 *include "ancients/nation/gothic.ruleset"
 *include "ancients/nation/iberian.ruleset"
 *include "ancients/nation/thracian.ruleset"
-;
-; observer and barbarians MUST go last in THIS order
-;
+
 *include "ancients/nation/barbarian.ruleset"
+*include "ancients/nation/pirate.ruleset"

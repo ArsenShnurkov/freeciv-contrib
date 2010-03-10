@@ -2,7 +2,7 @@
 [tilespec]
 
 ; Format and options of this tilespec file:
-options = "+tilespec4"
+options = "+tilespec4+2007.Oct.26"
 
 ; A simple name for the tileset specified by this file:
 name = "Ancients"
@@ -65,6 +65,7 @@ files =
   "trident/select.spec",
   "misc/flags.spec",
   "misc/shields.spec",
+  "misc/editor.spec",
   "misc/cursors.spec",
   "trident/grid.spec",
   "trident/roads.spec",
@@ -83,82 +84,84 @@ files =
 ; Terrain info - see README.graphics
 
 [layer0]
-match_style = "BOOL"
-match_types = "arctic", "desert", "forest", "grassland", "hills", "jungle", "mountains", "ocean", "plains", "swamp", "tundra"
+match_types = "arctic", "desert", "forest", "grassland", "hills", "jungle", "mountains", "water", "plains", "swamp", "tundra"
 
 [layer1]
-match_style = "BOOL"
-match_types = "ocean"
+match_types = "water"
 
-[terrain_arctic]
+[layer2]
+match_types = "water"
+
+[tile_arctic]
 is_blended = 0
 num_layers = 1
-layer0_match_style = "bool"
 layer0_match_type = "arctic"
+layer0_match_with = "arctic"
 mine_sprite = "tx.oil_mine"
 
-[terrain_desert]
+[tile_desert]
 is_blended = 0
 num_layers = 1
-layer0_match_style = "bool"
 layer0_match_type = "desert"
+layer0_match_with = "desert"
 mine_sprite = "tx.oil_mine"
 
-[terrain_forest]
+[tile_forest]
 is_blended = 0
 num_layers = 1
-layer0_match_style = "bool"
 layer0_match_type = "forest"
+layer0_match_with = "forest"
 
-[terrain_grassland]
+[tile_grassland]
 is_blended = 0
 num_layers = 1
-layer0_match_style = "bool"
 layer0_match_type = "grassland"
+layer0_match_with = "grassland"
 
-[terrain_hills]
+[tile_hills]
 is_blended = 0
 num_layers = 1
-layer0_match_style = "bool"
 layer0_match_type = "hills"
+layer0_match_with = "hills"
 mine_sprite = "tx.mine"
 
-[terrain_jungle]
+[tile_jungle]
 is_blended = 0
 num_layers = 1
-layer0_match_style = "bool"
 layer0_match_type = "jungle"
+layer0_match_with = "jungle"
 
-[terrain_mountains]
+[tile_mountains]
 is_blended = 0
 num_layers = 1
-layer0_match_style = "bool"
 layer0_match_type = "mountains"
+layer0_match_with = "mountains"
 mine_sprite = "tx.mine"
 
-[terrain_ocean]
+[tile_coast]
 is_blended = 0
-num_layers = 2
-layer0_match_style = "bool"
-layer0_match_type = "ocean"
-layer1_match_style = "bool"
-layer1_match_type = "ocean"
-layer1_cell_type = "rect"
+num_layers = 3
+layer0_match_type = "water"
+layer1_match_type = "water"
+layer1_match_with = "water"
+layer2_match_type = "water"
+layer2_match_with = "water"
+layer2_sprite_type = "corner"
 
-[terrain_plains]
+[tile_plains]
 is_blended = 0
 num_layers = 1
-layer0_match_style = "bool"
 layer0_match_type = "plains"
+layer0_match_with = "plains"
 
-[terrain_swamp]
+[tile_swamp]
 is_blended = 0
 num_layers = 1
-layer0_match_style = "bool"
 layer0_match_type = "swamp"
+layer0_match_with = "swamp"
 
-[terrain_tundra]
+[tile_tundra]
 is_blended = 0
 num_layers = 1
-layer0_match_style = "bool"
 layer0_match_type = "tundra"
+layer0_match_with = "tundra"
