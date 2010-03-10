@@ -1,0 +1,50 @@
+[nation_armenian]
+
+name=_("Armenian")
+plural=_("?plural:Armenians")
+groups="Asian"
+legend=_("Armenians colonised the Kingdom of Urartu\
+ in about 600 BC, forming a state in 190 BC.\
+ Ancient Armenia lasted until conquered by the Romans in 66 BC.")
+leader=
+ "Tigranes the Great",
+ "Artavazde",
+ "Artaxias",
+ "Mitridates",
+ "Trdat III"
+leader_sex="Male", "Male", "Male", "Male", "Male"
+flag="armenia"
+flag_alt = "-"
+city_style = "Classical"
+
+init_techs=""
+init_buildings=""
+init_government="Despotism"
+init_units=""
+civilwar_nations = "assyrian"
+
+cities =
+  "Artaxata",
+  "Satala",
+  "Tigranocerta",
+  "Arsamosata",
+  "Elegeia",
+  "Carana",
+  "Gorneae",
+  ; Armen Carapetian's list:
+  "Dvin", ; Capital, 550AD
+  "Tushpa",
+  "Erebuni",
+  "Argishti-Khinili",
+  "Urmia",
+  "Kharput",
+  "Satala",
+  "Ardahan",
+  "Kars",
+  "Ani",
+  "Artashat",
+  "Nakhichevan",
+  "Erzurum",
+  "Diyarbakir",
+  ; In modern Nagorno-Karabakh:
+  "Artsakh"

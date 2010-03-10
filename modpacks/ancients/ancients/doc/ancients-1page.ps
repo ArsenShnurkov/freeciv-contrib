@@ -1,0 +1,859 @@
+%!PS-Adobe-2.0
+%%Creator: techtree version 3.0 by David W. Pfitzner
+%%BoundingBox: 28 28 567 780
+%%Pages: 1
+%%DocumentFonts: Helvetica
+%%EndComments
+
+% techtree v3.0 options:
+%  input = "../ancients-techs.rulesout"
+%  rm_redundant = 0
+%  page_width = 210
+%  page_height = 285
+%  page_margin = 10
+%  font = "Helvetica"
+%  iso_latin1 = 1
+%  title = "Technology Tree for the Ancients Modpack"
+%  first_at_top = 0
+%  tech_info = 1
+%  two_page = 0
+%  two_overlap = 1
+%  line_gray = 50
+%  line_width = 50
+%  seed = 1046756468
+%  n_seed = 20
+%  pseudo_size = 30
+%  init_pseudo_linear = 1
+%  n_iter = 10
+%  n_iter_swap = 20
+%  n_iter_smooth = 5
+%  n_iter_zero = 3
+%  frep_n_inner = 1.0
+%  frep_n_outer = 0.5
+%  frep_size = 2.0
+%  frep_do_pp = 1
+%  debug = 0
+%  debug_new = 0
+%  debug_ps = 0
+%  debug_input = 0
+%  printps = 1
+%  pseudo_labels = 0
+%  internal_seed = 2060391861
+
+% techtree metrics:
+%  pathlength = 14.9755
+%  crossings = 112
+%  crossing weighted pathlength = 39.3322
+
+save                 % remember original state
+40 dict begin        % a local dictionary
+
+/D { 1 index 1 index } def
+  % (x y) duplicate to (x y x y)
+/L { newpath moveto lineto stroke } def
+  % (x1 y1 x2 y2) line
+/L2 { /y exch def /x exch def x y L x y } def
+  % (x1 y1 x2 y2) line, with x2, y2 back on stack at end
+/C1 { newpath moveto } def
+  % (x1 y1) start curve
+/C2 { D } def
+  % (x2 y2) apex of curve
+/C3 { /y exch def /x exch def x y curveto stroke x y } def
+  % (x3 y3) end of curve, leaving x3, y3 on stack
+/B { gsave translate 
+  2 dup dup scale 1 exch div setlinewidth
+  newpath -1 -1 moveto -1 1 lineto 1 1 lineto 1 -1 lineto
+  closepath stroke grestore } def
+  % (x y) box
+/P { pop pop } def  
+  % (x y) pop coords
+/S1 { D gsave translate 0 -7.5 translate } def
+  % (x y) setup for label, leave (x y) on stack
+/S2a { gsave newpath 0 0 moveto dup
+  stringwidth pop 2 div neg 0 rmoveto show grestore } def
+  % (string) write centered string
+/S2 { S2a 0 -5.5 translate } def
+  % (string) write centered string and go down a bit
+/S3 { grestore } def
+  % after finished label
+/G1 { gsave [ 6 3 ] 0 setdash } def
+  % start dashed line (was gray line)
+/G2 { grestore } def
+  % end dashed line (was gray line)
+
+/BB {
+  /y2 exch def /y1 exch def /x2 exch def /x1 exch def
+  newpath x1 y1 moveto
+  x2 y1 lineto
+  x2 y2 lineto
+  x1 y2 lineto
+  closepath
+} def   % (x1) (x2) (y1) (y2) define a bbox path
+
+/my_cliptopage {
+  28 567 28 780 BB
+  % gsave stroke grestore % uncomment to show bounding box
+  clip
+} def
+
+/font_latin1_encoding {  % Red Book, section 5.9.1
+  findfont
+  dup length dict begin
+    { 1 index /FID ne
+        {def}
+        {pop pop}
+      ifelse
+    } forall
+    /Encoding ISOLatin1Encoding def
+    currentdict
+  end
+} def   % (orig-font-name)
+
+/Helvetica-ISOLatin1 /Helvetica font_latin1_encoding definefont pop
+
+/find_my_font {
+  /Helvetica-ISOLatin1 findfont
+} def
+
+/my_defaultfont {
+  find_my_font          % Get the basic font
+  5.5 scalefont         % Scale the font to X points
+  setfont               % Make it the current font
+} def
+
+/links_follow {
+  0.5 setlinewidth
+  0.5 setgray  
+} def   % thin grey lines (text over)
+
+/nodes_follow {
+  my_defaultfont
+  0 setgray  
+} def   % black boxes/text
+
+/my_credits {
+  gsave
+  0 setgray
+  find_my_font
+  8.5 scalefont setfont
+  297 33 translate
+  (Technology Tree for the Ancients Modpack, by techtree v3.0, by David W. Pfitzner, dwp@mso.anu.edu.au) S2a
+  grestore
+} def
+
+%%EndProlog
+
+%%Page: 1 1
+
+gsave
+my_cliptopage
+
+% 28 567 53 780 BB stroke
+
+links_follow
+69 103
+D 78 163 L
+P
+103 103
+D 78 163 L
+D 111 163 L
+P
+167 103
+D 178 163 L
+D 211 163 L
+D 111 163 L
+P
+200 103
+D 145 163 L
+D 255 163 L
+P
+244 103
+D 255 163 L
+D 239 133 L2
+C1 233 163 C2 233 194 C3
+234 224 L
+P
+284 103
+D 332 163 L
+P
+318 103
+D 332 163 L
+P
+351 103
+D 298 163 L
+D 374 133 L2
+C1 397 163 C2 418 194 C3
+418 194 L2
+C1 439 224 C2 461 254 C3
+484 285 L
+P
+385 103
+D 369 133 L2
+C1 353 163 C2 354 194 C3
+354 224 L
+P
+418 103
+D 419 163 L
+D 429 133 L2
+C1 440 163 C2 445 194 C3
+445 194 L2
+C1 449 224 C2 439 254 C3
+439 254 L2
+C1 428 285 C2 434 315 C3
+434 315 L2
+C1 440 345 C2 431 375 C3
+422 406 L
+D 439 133 L2
+C1 460 163 C2 466 194 C3
+471 224 L
+D 347 133 L2
+C1 277 163 C2 227 194 C3
+227 194 L2
+C1 178 224 C2 159 254 C3
+140 285 L
+D 375 163 L
+P
+452 103
+D 419 163 L
+D 466 133 L2
+C1 481 163 C2 492 194 C3
+504 224 L
+P
+503 103
+D 477 133 L2
+C1 450 163 C2 419 194 C3
+387 224 L
+D 502 163 L
+D 530 133 L2
+C1 557 163 C2 558 194 C3
+558 194 L2
+C1 560 224 C2 557 254 C3
+557 254 L2
+C1 555 285 C2 553 315 C3
+553 315 L2
+C1 551 345 C2 524 375 C3
+524 375 L2
+C1 498 406 C2 474 436 C3
+450 466 L
+D 536 163 L
+D 487 133 L2
+C1 470 163 C2 450 194 C3
+450 194 L2
+C1 429 224 C2 396 254 C3
+363 285 L
+P
+78 163
+D 118 194 L2
+C1 158 224 C2 201 254 C3
+243 285 L
+D 72 194 L2
+C1 67 224 C2 61 254 C3
+61 254 L2
+C1 55 285 C2 50 315 C3
+44 345 L
+P
+111 163
+D 113 194 L2
+C1 115 224 C2 117 254 C3
+117 254 L2
+C1 119 285 C2 137 315 C3
+155 345 L
+P
+145 163
+D 136 194 L2
+C1 127 224 C2 117 254 C3
+117 254 L2
+C1 108 285 C2 115 315 C3
+121 345 L
+P
+178 163
+D 200 224 L
+P
+211 163
+D 267 224 L
+D 190 194 L2
+C1 168 224 C2 171 254 C3
+174 285 L
+P
+255 163
+D 310 224 L
+P
+298 163
+D 267 224 L
+D 387 224 L
+D 200 224 L
+D 234 224 L
+P
+332 163
+D 332 194 L2
+C1 332 224 C2 331 254 C3
+330 285 L
+D 310 194 L2
+C1 289 224 C2 288 254 C3
+286 285 L
+P
+375 163
+D 392 194 L2
+C1 409 224 C2 414 254 C3
+414 254 L2
+C1 418 285 C2 414 315 C3
+414 315 L2
+C1 410 345 C2 395 375 C3
+379 406 L
+D 354 224 L
+P
+419 163
+D 419 194 L2
+C1 419 224 C2 408 254 C3
+397 285 L
+P
+502 163
+D 471 224 L
+P
+536 163
+D 504 224 L
+D 538 224 L
+P
+200 224
+D 207 285 L
+P
+234 224
+D 207 285 L
+D 249 254 L2
+C1 265 285 C2 310 315 C3
+355 345 L
+D 140 285 L
+D 174 285 L
+D 363 285 L
+P
+267 224
+D 286 285 L
+D 288 254 L2
+C1 308 285 C2 348 315 C3
+389 345 L
+P
+310 224
+D 397 285 L
+D 450 285 L
+D 243 285 L
+P
+354 224
+D 330 285 L
+P
+471 224
+D 488 254 L2
+C1 505 285 C2 500 315 C3
+496 345 L
+P
+504 224
+D 484 285 L
+P
+538 224
+D 536 254 L2
+C1 533 285 C2 531 315 C3
+529 345 L
+P
+140 285
+D 44 345 L
+P
+174 285
+D 78 345 L
+D 221 345 L
+D 137 315 L2
+C1 99 345 C2 101 375 C3
+101 375 L2
+C1 103 406 C2 122 436 C3
+122 436 L2
+C1 141 466 C2 160 497 C3
+160 497 L2
+C1 179 527 C2 198 557 C3
+198 557 L2
+C1 217 587 C2 237 618 C3
+256 648 L
+P
+207 285
+D 121 345 L
+D 255 345 L
+D 188 345 L
+P
+243 285
+D 288 345 L
+D 155 345 L
+D 322 345 L
+P
+286 285
+D 355 345 L
+P
+330 285
+D 389 345 L
+D 322 345 L
+P
+363 285
+D 392 315 L2
+C1 420 345 C2 432 375 C3
+432 375 L2
+C1 444 406 C2 426 436 C3
+426 436 L2
+C1 408 466 C2 390 497 C3
+390 497 L2
+C1 372 527 C2 354 557 C3
+354 557 L2
+C1 336 587 C2 318 618 C3
+318 618 L2
+C1 300 648 C2 283 678 C3
+265 709 L
+P
+450 285
+D 496 345 L
+D 440 315 L2
+C1 430 345 C2 415 375 C3
+415 375 L2
+C1 400 406 C2 359 436 C3
+318 466 L
+D 462 345 L
+D 529 345 L
+P
+78 345
+D 85 375 L2
+C1 93 406 C2 104 436 C3
+104 436 L2
+C1 116 466 C2 128 497 C3
+128 497 L2
+C1 140 527 C2 152 557 C3
+152 557 L2
+C1 164 587 C2 176 618 C3
+176 618 L2
+C1 189 648 C2 201 678 C3
+201 678 L2
+C1 214 709 C2 226 739 C3
+239 769 L
+P
+121 345
+D 158 406 L
+D 124 406 L
+P
+155 345
+D 171 375 L2
+C1 187 406 C2 204 436 C3
+204 436 L2
+C1 220 466 C2 237 497 C3
+237 497 L2
+C1 253 527 C2 270 557 C3
+286 587 L
+P
+188 345
+D 158 406 L
+D 204 375 L2
+C1 221 406 C2 237 436 C3
+237 436 L2
+C1 253 466 C2 269 497 C3
+286 527 L
+P
+221 345
+D 302 406 L
+P
+255 345
+D 268 406 L
+P
+322 345
+D 268 406 L
+D 323 375 L2
+C1 324 406 C2 348 436 C3
+373 466 L
+P
+355 345
+D 345 406 L
+D 379 406 L
+D 422 406 L
+D 302 406 L
+P
+462 345
+D 458 375 L2
+C1 454 406 C2 441 436 C3
+441 436 L2
+C1 428 466 C2 425 497 C3
+421 527 L
+P
+529 345
+D 518 375 L2
+C1 508 406 C2 495 436 C3
+495 436 L2
+C1 482 466 C2 470 497 C3
+470 497 L2
+C1 457 527 C2 444 557 C3
+444 557 L2
+C1 431 587 C2 418 618 C3
+418 618 L2
+C1 406 648 C2 393 678 C3
+380 709 L
+P
+268 406
+D 318 466 L
+P
+422 406
+D 450 466 L
+D 373 466 L
+P
+318 466
+D 286 527 L
+P
+450 466
+D 421 527 L
+P
+286 527
+D 286 587 L
+P
+421 527
+D 403 557 L2
+C1 385 587 C2 367 618 C3
+350 648 L
+P
+286 587
+D 350 648 L
+D 256 648 L
+P
+256 648
+D 265 709 L
+P
+350 648
+D 380 709 L
+D 347 709 L
+P
+265 709
+D 239 769 L
+P
+nodes_follow
+69 103 S1 
+(Warrior Code:) S2
+(barracks I) S2
+S3 B
+103 103 S1 
+(Poetry) S2
+S3 B
+167 103 S1 
+(Superstition) S2
+S3 B
+200 103 S1 
+(Metallurgy) S2
+S3 B
+244 103 S1 
+(Pottery) S2
+S3 B
+284 103 S1 
+(Surveying) S2
+S3 B
+318 103 S1 
+(Masonry:) S2
+(city walls) S2
+(palace) S2
+(Hanging Gardens) S2
+S3 B
+351 103 S1 
+(Trade) S2
+S3 B
+385 103 S1 
+(Boating:) S2
+(boats) S2
+S3 B
+418 103 S1 
+(Improved Craftsmanship) S2
+S3 B
+452 103 S1 
+(Archery:) S2
+(skirmishers) S2
+S3 B
+503 103 S1 
+(Animal Husbandry) S2
+S3 B
+78 163 S1 
+(National Epic) S2
+S3 B
+111 163 S1 
+(Polytheism:) S2
+(temple) S2
+(Oracle) S2
+S3 B
+145 163 S1 
+(Bullion) S2
+S3 B
+178 163 S1 
+(Ceremonial Burial) S2
+S3 B
+211 163 S1 
+(Mysticism:) S2
+(\(temple +1\)) S2
+S3 B
+255 163 S1 
+(Copper Working) S2
+S3 B
+298 163 S1 
+(Bookkeeping:) S2
+(granary) S2
+S3 B
+332 163 S1 
+(Geometry:) S2
+(Pyramids) S2
+S3 B
+375 163 S1 
+(Tackle) S2
+S3 B
+419 163 S1 
+(Improved Bow:) S2
+(archers) S2
+S3 B
+502 163 S1 
+(Crude Wheel:) S2
+(early chariots) S2
+S3 B
+536 163 S1 
+(Horseback Riding:) S2
+(light cavalry) S2
+S3 B
+200 224 S1 
+(Monarchy:) S2
+(*petty monarchy) S2
+S3 B
+234 224 S1 
+(Writing) S2
+S3 B
+267 224 S1 
+(Astronomy) S2
+S3 B
+310 224 S1 
+(Bronze Working:) S2
+(spear phalanx) S2
+S3 B
+354 224 S1 
+(Sailing:) S2
+(warships) S2
+(light transport) S2
+(fish market) S2
+(Lighthouse) S2
+(~boats) S2
+S3 B
+387 224 S1 
+(Caravan:) S2
+(caravan) S2
+(caravanserai) S2
+S3 B
+471 224 S1 
+(Light Wheel) S2
+S3 B
+504 224 S1 
+(Mounted Archery) S2
+S3 B
+538 224 S1 
+(Saddle:) S2
+(heavy cavalry) S2
+S3 B
+140 285 S1 
+(Papyrus:) S2
+(library) S2
+(Great Library) S2
+S3 B
+174 285 S1 
+(Philosophy) S2
+S3 B
+207 285 S1 
+(Code of Laws:) S2
+(diplomat) S2
+S3 B
+243 285 S1 
+(Leadership) S2
+S3 B
+286 285 S1 
+(Mathematics) S2
+S3 B
+330 285 S1 
+(Map Making:) S2
+(heavy transport) S2
+S3 B
+363 285 S1 
+(Vellum) S2
+S3 B
+397 285 S1 
+(Catapult:) S2
+(catapult) S2
+S3 B
+450 285 S1 
+(Iron Working) S2
+S3 B
+484 285 S1 
+(Elephantry:) S2
+(elephants) S2
+S3 B
+44 345 S1 
+(Literacy:) S2
+(*ancient democracy) S2
+(\(+1 tech to 1st\)) S2
+S3 B
+78 345 S1 
+(Academy) S2
+S3 B
+121 345 S1 
+(Coinage) S2
+S3 B
+155 345 S1 
+(Monotheism:) S2
+(~colosseum) S2
+S3 B
+188 345 S1 
+(Diplomacy:) S2
+(*imperial monarchy) S2
+(Marco Polo's Embassy) S2
+S3 B
+221 345 S1 
+(Medicine) S2
+S3 B
+255 345 S1 
+(Constitution:) S2
+(~Pyramids) S2
+S3 B
+288 345 S1 
+(Guerilla Warfare:) S2
+(guerillas) S2
+S3 B
+322 345 S1 
+(Tactics:) S2
+(pike phalanx) S2
+(marines) S2
+(triremes) S2
+(barracks II) S2
+(~spear phalanx, warships) S2
+(~barracks I) S2
+S3 B
+355 345 S1 
+(Engineering:) S2
+(tannery) S2
+(\(colosseum +1\)) S2
+S3 B
+389 345 S1 
+(Navigation:) S2
+(harbor) S2
+(Sataspes' Expedition) S2
+(\(boats move +1\)) S2
+S3 B
+462 345 S1 
+(Steel) S2
+S3 B
+496 345 S1 
+(Improved Wheel:) S2
+(later chariots) S2
+(~early chariots) S2
+S3 B
+529 345 S1 
+(Stirrup:) S2
+(early lancers) S2
+(~later chariots) S2
+S3 B
+124 406 S1 
+(Usury:) S2
+(bank) S2
+S3 B
+158 406 S1 
+(Espionage:) S2
+(spy) S2
+S3 B
+268 406 S1 
+(Republic:) S2
+(*republic) S2
+S3 B
+302 406 S1 
+(Sanitation:) S2
+(sewer system) S2
+S3 B
+345 406 S1 
+(Bridge Building:) S2
+(aqueduct) S2
+S3 B
+379 406 S1 
+(Construction:) S2
+(colosseum) S2
+(war harbor) S2
+(Great Wall) S2
+S3 B
+422 406 S1 
+(Invention:) S2
+(onager) S2
+S3 B
+318 466 S1 
+(Legion:) S2
+(legionaires) S2
+(~pike phalanx, elephants) S2
+S3 B
+373 466 S1 
+(Siegecraft:) S2
+(Colossus) S2
+S3 B
+450 466 S1 
+(Horse Collar) S2
+S3 B
+286 527 S1 
+(Principate:) S2
+(*principate) S2
+(auxiliaries) S2
+(courthouse) S2
+S3 B
+421 527 S1 
+(Improved Plow) S2
+S3 B
+286 587 S1 
+(Dark Age:) S2
+(warband) S2
+(longboats) S2
+(cathedral) S2
+(~legionaires, auxiliaries, marines, triremes) S2
+(~aqueduct) S2
+(~barracks II) S2
+(~courthouse) S2
+(~library) S2
+(~war harbor) S2
+(~sewer system) S2
+(~temple) S2
+(~Colossus) S2
+(~Great Library) S2
+(~Great Wall) S2
+(~Hanging Gardens) S2
+(~Sataspes' Expedition) S2
+(~Oracle) S2
+S3 B
+256 648 S1 
+(Monasticism:) S2
+(\(cathedral +1\)) S2
+S3 B
+350 648 S1 
+(Feudalism:) S2
+(men-at-arms) S2
+(~warband) S2
+S3 B
+265 709 S1 
+(Theology:) S2
+(Pilgrimage Site) S2
+S3 B
+347 709 S1 
+(Medieval Republic:) S2
+(halberdiers) S2
+S3 B
+380 709 S1 
+(Chivalry:) S2
+(knights) S2
+(barracks III) S2
+(~early lancers) S2
+S3 B
+239 769 S1 
+(University:) S2
+(university) S2
+(\(cathedral -1\)) S2
+S3 B
+
+my_credits
+
+grestore   % my_cliptopage
+showpage
+
+%%Trailer
+
+end                  % stop using temporary dictionary
+restore              % restore original state
+
+%%EOF

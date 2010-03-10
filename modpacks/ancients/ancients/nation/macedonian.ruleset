@@ -1,0 +1,59 @@
+[nation_macedonian]
+
+name=_("Macedonian")
+plural=_("?plural:Macedonians")
+groups=_("European"), _("Mediterranean")
+legend=_("The Kingdom of Macedon, homeland of Alexander the Great.")
+leader=
+ "Philippus II",
+ "Olympias",
+ "Alexandros",
+ "Kassandros",
+ "Seleukos Nikator",
+ "Ptolemaios Soter",
+ "Cleopatra VII"
+leader_sex="Male", "Female", "Male", "Male", "Male", "Male", "Female"
+flag="macedonia"
+flag_alt = "-"
+city_style = "Classical"
+ruler_titles = { "government",      "male_title",      "female_title"
+                 "Despotism",       _("Despot"),       _("Despot")
+               }
+
+init_techs=""
+init_buildings=""
+init_government="Despotism"
+init_units=""
+civilwar_nations="hellene", "egyptian", "byzantium"
+
+cities =
+ "Aegae",
+ "Pella",
+ "Thessalonike",
+ "Kassandreia",
+ "Edessa",
+ "Amphipolis",
+ "Pudna",
+ "Argilus",
+ "Crestone",
+ "Perseis",
+ "Methone",
+ "Duim",
+ "Heraclea",
+; More Macedon cities at: http://en.wikipedia.org/wiki/Mygdonia_(Europe)
+; Below Alexander the Great's cities, from Ancients modpack by Bobby Bryant
+ "Alexandreia",
+ "Alexandreia ad Latmum",
+ "Alexandreia Carmania",
+ "Alexandreia Oreitae",
+ "Alexandreia Areia",
+ "Alexandreia Prophthasia",
+ "Alexandreia Arachosia",
+ "Alexandreia ad Oxum",
+ "Alexandreia Eschate",
+ "Alexandreia Paropamisadae",
+ "Alexandreia Nikaea",
+ "Alexandreia Bucephala",
+ "Alexandreia Iomoussai",
+ "Alexandretta",
+ "Alexandropolis"

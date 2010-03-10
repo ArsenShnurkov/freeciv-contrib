@@ -1,0 +1,26 @@
+[nation_etruscan]
+
+name=_("Etruscan")
+plural=_("?plural:Etruscans")
+groups=_("European"), _("Mediterranean")
+legend=_("The civilization in the north of what is now Italy,\
+ from 800 BC until replaced by the Romans in 509 BC.")
+leader=
+ "Lars Porsenna",
+ "Tarquinus Priscus",
+ "Tarquinus Superbus"
+leader_sex="Male", "Male", "Male"
+flag = "etruscan"
+flag_alt = "italy"
+city_style = "Classical"
+
+init_techs=""
+init_buildings=""
+init_government="Despotism"
+init_units=""
+civilwar_nations="roman"
+
+cities =
+  "Volaterrae", "Cortona", "Perusia", "Clusium", "Tarquini", "Volci",
+  "Veii", "Capua", "Carae", "Volsinii", "Rusellae", "Vetulonia", "Arretium",
+  "Felsina", "Hatria", "Mantua"

@@ -1,0 +1,739 @@
+
+; Use command "rulesetdir ancients" in the server to have freeciv
+; use this file.
+
+[datafile]
+description="Ancients buildings data for Freeciv"
+options="1.10.1"
+
+; /* <-- avoid gettext warnings
+;
+; Below: The individual buildings, one per section.
+; (Buildings = City Improvements and Wonders)
+;
+; The actual tag used (the * in [building_*]) does not matter, except 
+; it must be unique within this file, and it may be used in debug 
+; output when reading this file.
+;
+; Notes:
+;
+; name		= name as seen by user 
+; genus	        = genus; one of:
+;                 "GreatWonder", "SmallWonder", "Improvement", "Special".
+; reqs		= requirements to build the building (see effects.ruleset
+;		  and README.effects for help on requirements)
+; graphic	= icon of improvement (used in city dialog)
+; graphic_alt	= alternate icon of improvement
+; obsolete_by	= advance which makes building obsolete; special
+;		  value "None" means does not become obsolete
+; build_cost	= production shields required to build
+; upkeep	= monetary upkeep value
+; sabotage	= percent chance of diplomat sabotage being successful
+; flags         = special flag strings
+;
+; */ <-- avoid gettext warnings
+
+[building_aqueduct]
+name		= _("Aqueduct")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Bridge Building", "Player"
+    }
+graphic	= "b.aqueduct"
+graphic_alt	= "-"
+obsolete_by	= "Dark Age"
+build_cost	= 80
+upkeep		= 2
+sabotage	= 50
+sound		= "b_aqueduct"
+sound_alt	= "b_generic"
+helptext	= _("\
+Allows a city to grow larger than size 8.  A Sewer System is also\
+ required for a city to grow larger than size 12.\
+")
+
+[building_bank]
+name		= _("Bank")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Usury", "Player"
+      "Building", "Caravanserai", "City"
+    }
+graphic	= "b.bank"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 120
+upkeep		= 3
+sabotage	= 50
+sound		= "b_bank"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+Together with the Caravanserai improvement, a Bank increases the\
+ luxury and tax production within a city by 100%.\
+")
+
+[building_barracks]
+name		= _("Barracks")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Warrior Code", "Player"
+    }
+graphic	= "b.barracks"
+graphic_alt	= "-"
+obsolete_by	= "Tactics"
+replaced_by	= "Barracks II"
+build_cost	= 40
+upkeep		= 1
+sabotage	= 10
+sound		= "b_barracks_i"
+sound_alt	= "b_generic"
+helptext	= _("\
+With a Barracks, each new land unit built in a city will\
+ automatically have Veteran status, which means that its attack and\
+ defence strengths are increased by 50%.  Also, damaged land units\
+ which stay in town for one full turn without moving are completely\
+ restored.\
+")
+
+[building_barracks_ii]
+name		= _("Barracks II")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Tactics", "Player"
+    }
+graphic	= "b.barracks"
+graphic_alt	= "-"
+obsolete_by	= "Dark Age"
+replaced_by	= "Barracks III"
+build_cost	= 40
+upkeep		= 1
+sabotage	= 10
+sound		= "b_barracks_ii"
+sound_alt	= "b_generic"
+helptext	= _("\
+With a Barracks, each new land unit built in a city will\
+ automatically have Veteran status, which means that its attack and\
+ defence strengths are increased by 50%.  Also, damaged land units\
+ which stay in town for one full turn without moving are completely\
+ restored.\
+")
+
+[building_barracks_iii]
+name		= _("Barracks III")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Chivalry", "Player"
+    }
+graphic	= "b.barracks"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 40
+upkeep		= 1
+sabotage	= 10
+sound		= "b_barracks_iii"
+sound_alt	= "b_generic"
+helptext	= _("\
+With a Barracks, each new land unit built in a city will\
+ automatically have Veteran status, which means that its attack and\
+ defence strengths are increased by 50%.  Also, damaged land units\
+ which stay in town for one full turn without moving are completely\
+ restored.\
+")
+
+[building_cathedral]
+name		= _("Cathedral")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Dark Age", "Player"
+    }
+graphic	= "b.cathedral"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 120
+upkeep		= 3
+sabotage	= 50
+sound		= "b_cathedral"
+sound_alt	= "b_generic"
+helptext	= _("\
+A Cathedral makes 3 unhappy citizens content in a city, making it\
+ easier to maintain order in that city.  The discovery of Theology\
+ increases the effect of a Cathedral, making an additional unhappy\
+ citizen content.\
+")
+
+[building_city_walls]
+name		= _("City Walls")
+genus		= "Improvement"
+flags		= "VisibleByOthers"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Masonry", "Player"
+    }
+graphic	= "b.city_walls"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 80
+upkeep		= 0
+sabotage	= 10
+sound		= "b_city_walls"
+sound_alt	= "b_generic"
+helptext	= _("\
+Units in a walled city have their defence strengths tripled against\
+ attacks by most ground units.\
+\n\n\
+Whenever a unit in a walled city is lost to an attacker\
+ only that single unit is lost; any units stacked with it come away\
+ unscathed.\
+\n\n\
+In addition, whenever a unit in a walled city is lost to an attacker\
+ there is not an automatic loss of population, as there is in an\
+ un-walled city.\
+\n\n\
+Finally, walled cities provide a certain amount of resistance to spying.\
+")
+
+[building_colosseum]
+name		= _("Colosseum")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Construction", "Player"
+    }
+graphic	= "b.colosseum"
+graphic_alt	= "-"
+obsolete_by	= "Monotheism"
+build_cost	= 100
+upkeep		= 4
+sabotage	= 50
+sound		= "b_colosseum"
+sound_alt	= "b_generic"
+helptext	= _("\
+Entertains the citizens of a city, making 3 unhappy citizens content. \
+")
+
+[building_courthouse]
+name		= _("Courthouse")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Principate", "Player"
+    }
+graphic	= "b.courthouse"
+graphic_alt	= "-"
+obsolete_by	= "Dark Age"
+build_cost	= 80
+upkeep		= 1
+sabotage	= 50
+sound		= "b_courthouse"
+sound_alt	= "b_generic"
+helptext	= _("\
+Reduces the corruption and waste in a city by 50%.\
+ Under a Republic, Principate, Ancient Democracy, or Imperial Monarchy, a\
+ Courthouse makes 1 unhappy citizen content. \
+ Also makes the revolt cost of the city 4 times bigger.\
+")
+
+[building_tannery]
+name		= _("Tannery")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Engineering", "Player"
+    }
+graphic	= "b.factory"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 200
+upkeep		= 4
+sabotage	= 50
+sound		= "b_tannery"
+sound_alt	= "b_factory"
+helptext	= _("\
+Increases the shield production in a city by 50%.  This increase may\
+ also contribute significantly to pollution.\
+")
+
+[building_granary]
+name		= _("Granary")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Bookkeeping", "Player"
+    }
+graphic	= "b.granary"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 60
+upkeep		= 1
+sabotage	= 50
+sound		= "b_granary"
+sound_alt	= "b_generic"
+helptext	= _("\
+The amount of stored food will be set to half full whenever a city\
+ with a Granary shrinks or grows. This helps a city to grow faster\
+ and more easily withstand famine.\
+")
+
+[building_fish_market_river]
+name		= _("River Fish Market")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Sailing", "Player"
+      "Special", "River", "Adjacent"
+    }
+graphic	= "b.fish_market"
+graphic_alt	= "b.harbour"
+obsolete_by	= "None"
+build_cost	= 20
+upkeep		= 1
+sabotage	= 50
+sound		= "b_fish_harbour"
+sound_alt	= "b_harbour"
+helptext	= _("\
+Gives one extra food resource on all River tiles.  The city needs\
+ to be riverine to build this improvement.\
+")
+
+[building_fish_market_ocean]
+name		= _("Sea Fish Market")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Sailing", "Player"
+      "Terrain", "Ocean", "Adjacent"
+    }
+graphic	= "b.fish_market"
+graphic_alt	= "b.harbour"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 1
+sabotage	= 50
+sound		= "b_fish_harbour"
+sound_alt	= "b_harbour"
+helptext	= _("\
+Gives one extra food resource on all Ocean tiles.  The city needs\
+ to be coastal to build this improvement.\
+")
+
+[building_library]
+name		= _("Library")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Papyrus", "Player"
+    }
+graphic	= "b.library"
+graphic_alt	= "-"
+obsolete_by	= "Dark Age"
+build_cost	= 80
+upkeep		= 1
+sabotage	= 50
+sound		= "b_library"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+Increases the science output in a city by 50%.\
+")
+
+[building_caravanserai]
+name		= _("Caravanserai")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Caravan", "Player"
+    }
+graphic	= "b.caravanserai"
+graphic_alt	= "b.marketplace"
+obsolete_by	= "None"
+build_cost	= 80
+upkeep		= 1
+sabotage	= 50
+sound		= "b_caravanserai"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+Increases the luxury and tax output in a city by 50%.\
+")
+
+[building_harbour]
+name		= _("Harbour")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Navigation", "Player"
+      "Terrain", "Ocean", "Adjacent"
+    }
+graphic	= "b.harbour"
+graphic_alt	= "b.offshore_platform"
+obsolete_by	= "None"
+build_cost	= 160
+upkeep		= 3
+sabotage	= 50
+sound		= "b_harbour"
+sound_alt	= "b_generic"
+helptext	= _("\
+Adds 1 extra shield resource on all Ocean squares in a city.  The\
+ city needs to be coastal to build this improvement.\
+")
+
+[building_palace]
+name		= _("Palace")
+genus		= "SmallWonder"
+flags		= "SaveSmallWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Masonry", "Player"
+    }
+graphic	= "b.palace"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 1
+sound		= "b_palace"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+Makes a city the capital and the center of your government. \
+ Corruption in other cities is related to how far away from the\
+ capital they are, except when the government is Democracy or\
+ Communism.  The cost of inciting a revolt in a city also depends\
+ upon the city's distance from the capital (under all forms of\
+ government).\
+\n\n\
+Take good care of your capital, as its loss may result in your\
+ empire plunging into civil war. Losing your current palace also\
+ results in losing whatever spaceship you might have.\
+\n\n\
+Under Despotism the palace gives you a +75% production bonus,\
+ and under Petty Monarchy a +50% production bonus.\
+")
+
+[building_war_harbour]
+name		= _("War Harbour")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Construction", "Player"
+      "Terrain", "Ocean", "Adjacent"
+    }
+graphic	= "b.war_harbour"
+graphic_alt	= "b.port_facility"
+obsolete_by	= "Dark Age"
+build_cost	= 80
+upkeep		= 3
+sabotage	= 10
+sound		= "b_war_harbour"
+sound_alt	= "b_port_facility"
+helptext	= _("\
+Allows a city to build veteran sea units.  Also, damaged sea units\
+ which stay in town for one full turn without moving are completely\
+ restored.\
+")
+
+[building_sewer_system]
+name		= _("Sewer System")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Sanitation", "Player"
+      "Building", "Aqueduct", "City"
+      "Special", "River", "Adjacent"
+    }
+graphic	= "b.sewer_system"
+graphic_alt	= "-"
+obsolete_by	= "Dark Age"
+build_cost	= 120
+upkeep		= 2
+sabotage	= 50
+sound		= "b_sewer_system"
+sound_alt	= "b_generic"
+helptext	= _("\
+Allows a city to grow larger than size 12.  An Aqueduct is first\
+ required for a city to grow larger than size 8.\
+")
+
+[building_temple]
+name		= _("Temple")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Polytheism", "Player"
+    }
+graphic	= "b.temple"
+graphic_alt	= "-"
+obsolete_by	= "Dark Age"
+build_cost	= 40
+upkeep		= 1
+sabotage	= 50
+sound		= "b_temple"
+sound_alt	= "b_generic"
+helptext	= _("\
+Makes one unhappy citizen content.  Both the Mysticism advance\
+ and the Oracle wonder double this effect.  With both Mysticism\
+ and the Oracle, 4 citizens are made content.\
+")
+
+[building_university]
+name		= _("University")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "University", "Player"
+    }
+graphic	= "b.university"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 120
+upkeep		= 3
+sabotage	= 50
+sound		= "b_university"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+A University increases the science\
+ production of a city by 50%.\
+")
+
+[building_colossus]
+name		= _("Colossus")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Siegecraft", "Player"
+    }
+graphic	= "b.colossus"
+graphic_alt	= "-"
+obsolete_by	= "Dark Age"
+build_cost	= 200
+upkeep		= 0
+sabotage	= 1
+sound		= "w_colossus"
+sound_alt	= "w_generic"
+helptext	= _("\
+Each square around the city where this wonder is built that is already\
+ generating some trade produces one extra trade resource.\
+\n\n\
+Historical Note: The reason Siegecraft is listed as the required \
+ technology for this wonder is that historically the Colossus of \
+ Rhodes was built from the proceeds of auctioning off the remnants \
+ of siege engines left behind after an attempt to take Rhodes was \
+ abandoned.
+")
+
+[building_great_library]
+name		= _("Great Library")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Papyrus", "Player"
+      "Building", "Library", "City"
+    }
+graphic	= "b.great_library"
+graphic_alt	= "-"
+obsolete_by	= "Dark Age"
+build_cost	= 300
+upkeep		= 0
+sabotage	= 1
+sound		= "w_great_library"
+sound_alt	= "w_generic"
+helptext	= _("\
+The civilization which builds the Great Library gets every advance\
+ that at least three other civilizations have achieved.\
+")
+
+[building_great_wall]
+name		= _("Great Wall")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Construction", "Player"
+    }
+graphic	= "b.great_wall"
+graphic_alt	= "-"
+obsolete_by	= "Dark Age"
+build_cost	= 300
+upkeep		= 0
+sabotage	= 1
+sound		= "w_great_wall"
+sound_alt	= "w_generic"
+helptext	= _("\
+Works as a City Wall in all your cities\
+ on that island or continent.\
+")
+
+[building_hanging_gardens]
+name		= _("Hanging Gardens")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Masonry", "Player"
+      "Special", "River", "Adjacent"
+    }
+graphic	= "b.hanging_gardens"
+graphic_alt	= "-"
+obsolete_by	= "Dark Age"
+build_cost	= 200
+upkeep		= 0
+sabotage	= 1
+sound		= "w_hanging_gardens"
+sound_alt	= "w_generic"
+helptext	= _("\
+Makes one content citizen happy in every city\
+ on the island that has it. Makes two extra\
+ content citizens happy in the city containing the Hanging Gardens\
+ (that is, a total of 3).  In the unlikely event where there are no\
+ content citizens to get the effect of Hanging Gardens, the wonder\
+ applies to unhappy citizens (making them content instead).\
+")
+
+[building_pilgrimage site]
+name		= _("Pilgrimage Site")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Theology", "Player"
+      "Building", "Cathedral", "City"
+    }
+graphic	= "b.pilgrimage_site"
+graphic_alt	= "b.cathedral"
+obsolete_by	= "None"
+build_cost	= 400
+upkeep		= 0
+sabotage	= 1
+sound		= "w_pilgrimage_site"
+sound_alt	= "w_generic"
+helptext	= _("\
+Makes two unhappy citizens content in every city.\
+")
+
+[building_lighthouse]
+name		= _("Lighthouse")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Sailing", "Player"
+      "Terrain", "Ocean", "Adjacent"
+    }
+graphic	= "b.lighthouse"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 200
+upkeep		= 0
+sabotage	= 1
+sound		= "w_lighthouse"
+sound_alt	= "w_generic"
+helptext	= _("\
+Gives all your sea units 1 additional movement point and eliminates the\
+ risk of losing Triremes on the high seas.
+")
+
+[building_sataspes_expedition]
+name		= _("Sataspes' Expedition")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Navigation", "Player"
+      "Terrain", "Ocean", "Adjacent"
+    }
+graphic	= "b.sataspes_expedition"
+graphic_alt	= "b.magellans_expedition"
+obsolete_by	= "Dark Age"
+build_cost	= 400
+upkeep		= 0
+sabotage	= 1
+sound		= "w_sataspes_expedition"
+sound_alt	= "w_magellans_expedition"
+helptext	= _("\
+Gives all your sea units 1 additional movement points.\
+\n\n\
+Historical Note: Satapses was a Persian navigator who sailed well \
+ down the coast of Africa during the reign of Xerxes (5th Century \
+ BCE), though he was not able to complete a circumnavigation of the \
+ continent.
+")
+
+[building_oracle]
+name		= _("Oracle")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Polytheism", "Player"
+      "Building", "Temple", "City"
+    }
+graphic	= "b.oracle"
+graphic_alt	= "-"
+obsolete_by	= "Dark Age"
+build_cost	= 300
+upkeep		= 0
+sabotage	= 1
+sound		= "w_oracle"
+sound_alt	= "w_generic"
+helptext	= _("\
+Makes two of your unhappy citizens content in every city with a temple.\
+")
+
+[building_pyramids]
+name		= _("Pyramids")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Geometry", "Player"
+      "Special", "River", "Adjacent"
+    }
+graphic	= "b.pyramids"
+graphic_alt	= "-"
+obsolete_by	= "Constitution"
+build_cost	= 200
+upkeep		= 0
+sabotage	= 1
+sound		= "w_pyramids"
+sound_alt	= "w_generic"
+helptext	= _("\
+The amount of stored food lost when one of your cities grows or shrinks\
+ is reduced by 25%.  This helps a city to grow faster and more easily\
+ withstand famine.  Cumulative with Granary.\
+")
+
+[building_capitalization]
+name		= _("Coinage")
+genus		= "Special"
+flags		= "Gold"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Coinage", "Player"
+    }
+graphic	= "b.capitalization"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 999
+upkeep		= 0
+sabotage	= 0
+; FIXME: this is the real helptext; restore when have a subordnate analogue
+; /* (ignore for gettext until fixed)
+;helptext	= _("\
+;This is not a normal improvement.  Instead, setting a city's\
+; production to Capitalization means its shield production is\
+; converted to tax output (money).\
+;")
+; */
+helptext	= _("\
+This is not a normal improvement.  Instead, setting a city's\
+ production to Coinage means its shield production is\
+ converted to tax output (money, coins!).\
+")
+
+
+[b_special]
+
+; Special values:
+
+default="Coinage"

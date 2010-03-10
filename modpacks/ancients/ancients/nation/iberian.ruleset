@@ -1,0 +1,70 @@
+[nation_iberian]
+
+name=_("Iberian")
+plural=_("?plural:Iberians")
+groups=_("European"), _("Atlantic"), _("Mediterranean")
+legend=_("The inhabitants of the Iberian Peninsula\
+ before its conquest by the Romans.")
+leader=
+ "Viriato",
+ "Endovellico", ; Iberian supreme god
+ "Neton" ; Iberian war god
+leader_sex="Male", "Male", "Male"
+flag="iberian"
+flag_alt = "spain"
+city_style = "Celtic"
+
+init_techs=""
+init_buildings=""
+init_government="Despotism"
+init_units=""
+civilwar_nations =
+ "roman", ; conquered by
+ "gothic" ; the Visigoths
+
+cities =
+ "Numancia",
+ "Tartessos",
+ "Lutia",
+ "Cauca",
+ "Ligustina",
+ "Uxama",
+ "Astorga",
+ "Clunica",
+ "Setiasicon",
+ "Veleya",
+ "Turiasu",
+ "Segeda",
+ "Septimanca",
+ "Segantia",
+ "Salmantica",
+ "Norba",
+ "Mastia",
+ "Arbocala",
+ "Iliturgi",
+ "Astapa",
+ "Evora",
+ "Eso",
+ "Caiscada",
+ "Bolscan",
+ "Iltirta",
+ "Eusti",
+ "Urso",
+ "Acinipo",
+ "Munda",
+ "Ilduro",
+ "Cesse",
+ "Colouniocu",
+ "Baitolo",
+ "Bilbilis",
+ "Ercavica",
+ "Arecoradas",
+ "Segobirices",
+ "Arse",
+ "Obulco",
+ "Saiti",
+ "Cástulo",
+ "Ilbubeibe",
+ "Ebussus"
+
+

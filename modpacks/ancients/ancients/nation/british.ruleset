@@ -1,0 +1,57 @@
+[nation_british]
+
+name=_("British")
+plural=_("?plural:Britons")
+groups="European", "Atlantic"
+legend=_("The Iron Age inhabitants of what is now Great Britain.")
+leader=
+ "Boudicca",
+ "Cassivellaunus"
+leader_sex=
+ "Female",
+ "Male"
+flag="briton"
+flag_alt = "cornwall"
+city_style = "Celtic"
+ruler_titles = { "government",      "male_title",      "female_title"
+                 "Despotism",       _("Chieftain"), _("Chieftain")
+               }
+
+init_techs=""
+init_buildings=""
+init_government="Despotism"
+init_units=""
+
+cities =
+ ; pre-Roman trading ports
+ "Mount Batten (ocean)", ; Plymouth Sound
+ "Hengistbury (ocean)", ; Christchurch Harbour
+ ; Romano-British civitas and municipia, E to W and S to N
+ ; Each nominally a tribal capital
+ "London (plains,ocean,river)",
+ "Canterbury (ocean,forest)",
+ "Chichester (ocean)",
+ "Silchester (!ocean)",
+ "Winchester (forest)",
+ "Dorchester",
+ "Exeter",
+ "Verulamium (plains)", ; St. Albans
+ "Cirencester (hills)",
+ "Carmarthen",
+ "Norwich (grassland,!hills,!mountains)", ; Caistor by Norwich
+ "Leicester (!ocean)",
+ "Wroxeter (!ocean)",
+ "Aldborough (!ocean)",
+ ; Romano-British legionary fortresses
+ "Caerleon",
+ "Chester (ocean)",
+ "York (plains)",
+ ; Romano-British coloniae
+ "Colchester (forest,ocean,!hills,!mountains)",
+ "Glouchester (forest,river)",
+ "Lincoln (!hills,!mountains)",
+ ; Other Romano-British urban centres (later)
+ "Bath",
+ "Catterick",
+ "Carlisle"
+; Select from the civil-war nations for the remainder

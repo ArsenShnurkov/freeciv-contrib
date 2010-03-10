@@ -1,0 +1,59 @@
+[nation_franks]
+
+name=_("Frankish")
+plural=_("?plural:Franks")
+groups=_("Medieval"), _("European"), _("Atlantic")
+legend=_("The Franks were a Germanic confederation\
+ that formed in what is now north western Germany \
+ in the third century AD.\
+ In the late fifth century they conquered northern Roman Gaul.")
+leader=
+ ; Merovigians, Salian Franks
+ "Childeric", ;  King of Belgica Secunda, and perhaps more.
+ "Clovis I", ; conquered northern Gaul, unified the Franks
+ "Clotild", ; wife of Clovis I (actually Burgundian)
+ "Chlothar I",
+ "Dagobert III", ; the last great Merovigian
+ ; Carolingians, Rhineland Franks
+ "Sigibert the Lame",
+ "Charles Martel",
+ "Pippin",
+ "Charlemagne"
+leader_sex="Male", "Male", "Female", "Male", "Male",
+  "Male", "Male", "Male", "Male"
+flag="france_old"
+flag_alt = "belgium" ; for the Salian Franks
+city_style = "European"
+
+ruler_titles = { "government",      "male_title",    "female_title"
+                 "Despotism",       _("General"),    _("General") ; Latin dux
+               }
+
+init_techs=""
+init_buildings=""
+init_government="Despotism"
+init_units=""
+civilwar_nations="gallic"
+
+cities =
+  ; Important towns of the Merovigians
+  "Köln (plains, hills, river)", ; Cologne
+  "Tournai (!mountains)",
+  "Cambrai (!mountains)",
+  "Soissons", "Reims",
+  "Trier (forest, river, !ocean)",
+  "Paris",
+  "Metz", "Tours", "Angers", "Orléans",
+  ; Additional Caroligian towns (more needed)
+  "Aachen (plains, hills)",
+  ; Modern French towns
+  "Lyon", "Marseille", "Lille", "Bordeaux",
+  "Nantes", "Rouen",
+  "Toulouse", "Montpellier", "Nîmes", "Toulon",
+  "Chartres", "Avignon", "Grenoble", "Dijon", "Amiens",
+  "Cherbourg", "Caen", "Calais", "Limoges", "Clermont-Ferrand",
+  "Nancy", "Besançon", "St. Etienne", "Brest", "Perpignan",
+  "Vichy", "Rennes", "Le Havre", "La Rochelle", "Poitiers",
+  "St. Nazaire", "Bourges", "Le Mans", "Valenciennes", "Montlucon"
+
+

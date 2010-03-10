@@ -1,0 +1,13 @@
+
+ o Add more nations:
+    - Stick w/ nations w/ known leaders.
+    - Need appropriate flags.
+       - See ../fantasy/flags.*
+
+ o Enable cataphracts.
+    - Make certain nations interested
+
+ o Improve the graphics:
+    - splash screen (intro.xpm)
+    - units
+    - migrate isoancients to amplio

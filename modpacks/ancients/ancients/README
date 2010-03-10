@@ -1,0 +1,134 @@
+The Ancients rule-set is designed to provide Freeciv with a flavour of the
+pre-gunpowder era.  The current version focuses on the nations of
+Mesopotamia, the Mediterranean, and surrounding regions.
+
+
+---
+Using the rule-set:
+
+For network play, be sure the rule-set is available both on the server and on
+all the clients' systems.
+
+Start the server normally, and issue the following commands:
+
+	rulesetdir ancients
+
+These server commands can be used in conjunction with most other server
+commands that you want to use.
+
+Start the clients with the command:
+
+	civclient -t ancients
+
+If you do not specify -t, then you will get the default tile-set, which
+will not make any sense as a representation for your units.
+
+
+---
+Playing under the rule-set:
+
+It is VERY IMPORTANT to remember that you are not playing the standard
+game.  The technology tree is different, and units, technologies, buildings,
+and governments all have new characteristics.  Do not assume that things
+work as before! Information is available under the Help menu of the
+game client.
+
+Certain aspects of maintaining your civilization will be difficult to manage,
+and this is deliberate in the Ancients rule-set.  You should often face tough
+decisions between progress and survival, and you may find your research forced
+to directions you did not want to take.  Learn to enjoy the challenge!  If you
+continually feel that your civilization is teetering on the edge of chaos,
+then the rule-set is well designed.
+
+If you feel frustrated after playing under the rule-set, start again and
+pursue a different tech strategy.  This will often result in a completely
+different style of game.  Units that seem worthless in one game will prove
+to be quite valuable in the next.
+
+Miscellaneous warnings:
+
+ o The Ancient Democracy represents the government of Athens and its small
+   empire during the Peloponnesian War.  This government type is unsuitable
+   when you have more than a handful of cities; changing to it after your
+   nation has grown large will have disastrous results.
+
+ o The Petty Kingdom and Republic are suitable for medium-sized empires;
+   you will need to change to Imperial Monarchy or the Principate to manage
+   the largest empires.
+
+ o All naval units in the game risk sinking if they do not end a turn
+   adjacent to a shoreline.
+
+ o The percent chance for diplomatic sabotage differs from the standard
+   game as follows:
+    - Military installations suffer only a 10% chance, since they will
+      usually be guarded.
+    - The palace and all wonders suffer a 1% chance, just to keep things
+      interesting.
+    - All others suffer a 50% chance.
+
+ o Settlers can not build roads or irrigate land; you must use Workers to do
+    so.
+
+---
+Known Bugs:
+
+ o Freeciv's hard-coded calendar is very unsatisfactory for this rule-set.
+   It would be desirable to end the game around 1500 CE, but this would not
+   provide enough turns.  Meanwhile, go ahead and run the game up to the
+   year 2000 or so, to get enough turns, but ignore the actual dates in the
+   display.
+   This applies also in Freeciv 2.1; however, experimentally, you can 
+   enable spacerace, which will have no further effects more than slowing 
+   down the timeline to 5 years/turn when you research Tactics and speeding
+   it back up when you research Dark Age. This is experimental.
+
+---
+
+About this version
+
+Ancients 2.1.0-2 (preview)
+
+Updated for Freeciv 2.1 branch.
+Major changes from 2.0.x:
+* Updated all rules, governments etc to effects.ruleset
+* Now has more nations
+
+An amplio-based tileset for Ancients called ampcients compiled by Daniel Markstedt is available but not (yet) under a bundleable license. See the wiki page[1] for more information.
+
+Report any bugs and/or suggestions to me or Daniel Markstedt
+
+See also the original webpage[2] of Ancients for Freeciv 1.x
+
+[1]: http://freeciv.wikia.com/wiki/Ancients
+[2]: http://www.cs.utexas.edu/users/bdbryant/freeciv/ancients.html
+
+Updated by
+Ulrik Sverdrup <ulrik.sverdrup@gmail.com>
+Daniel Markstedt <himasaram@spray.se>
+
+---
+
+The current maintainer of the rule-set:
+
+        Benedict Adamson <badamson@spamcop.net>
+
+The original maintainers of the rule-set:
+
+	Bobby Bryant <bdbryant@mail.utexas.edu>
+	Moses Lei    <mlei@symphony.dhs.org>
+
+Additional contributers (alphabetical):
+	Armen Carapetian <acarapetian@gmail.com>
+	Aho Esen
+        Miguel Farah <miguel.farah@gmail.com>
+	Daniel Markstedt <himasaram@spray.se>
+        William Allen Simpson <wsimpson@greendragon.com>
+
+The rule-set has a Web site at:
+
+	http://www.cs.utexas.edu/users/bdbryant/freeciv/ancients.html
+
+Feel free to send feedback to the maintainer, or to discuss the rule-set
+on the Freeciv mailing list.
+

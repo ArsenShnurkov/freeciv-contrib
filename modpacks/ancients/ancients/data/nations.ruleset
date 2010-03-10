@@ -1,0 +1,103 @@
+
+; Use the command "rulesetdir ancients" in the server to have freeciv
+; use this file.
+
+[datafile]
+description="Ancients nations data for Freeciv"
+options="1.9"
+
+; Descriptions of nation groups
+; name 		= name of the group
+; match		= How much the AI will try to select a nation in the same
+;                 group
+; Place nations in the regional groups appropriate for their capital
+; or central area, not their maximum extent.
+[ngroup_african]
+name=_("?nationgroup:African")
+match=1
+[ngroup_asian]
+name=_("?nationgroup:Asian")
+match=1
+[ngroup_european]
+name=_("?nationgroup:European")
+match=1
+[ngroup_medieval]
+name=_("?nationgroup:Medieval")
+match=1
+[ngroup_atlantic]
+name=_("?nationgroup:Atlantic")
+match=1
+[ngroup_mediterranean]
+name=_("?nationgroup:Mediterranean")
+match=1
+[ngroups_mesopotamian]
+name=_("?nationgroup:Mesopotamian")
+match=1
+
+; Below: nations data in sections [nation_*] for
+; all nations available. If you want to have more
+; nations just add one at the end.
+;
+; Notes:
+;
+; name		= name of the nation
+; plural	= plural form of the nation name (use '?plural:' qualifier)
+; groups	= member group(s)
+; conflicts_with = a list of nations that should not be chosen together
+;		   with the nation
+; legend	= a brief history or trivia of the nation
+; leader	= default leader names for the nation
+; leader_sex    = sex of each default leader: "Male" or "Female"
+; flag          = string to look for in client tilespec files for
+;                 preferred flag icon
+; flag_alt      = alternate flag icon string, or "-"
+; city_style	= preferred city style
+; ruler_titles	= unique leader titles for the nation
+; civilwar_nations = a list of the nations that should appear in case of
+;		     civil war - also used for fallback city names
+; cities	= city names, of course :-)
+;
+; See doc/README.nations for information on marking up cities with terrain
+; information as well as more comprehensive contents and style guidelines.
+;
+
+*include "ancients/nation/roman.ruleset"
+*include "ancients/nation/babylonian.ruleset"
+*include "ancients/nation/german.ruleset"
+*include "ancients/nation/egyptian.ruleset"
+*include "ancients/nation/greek.ruleset"
+*include "ancients/nation/indian.ruleset"
+*include "ancients/nation/english.ruleset"
+*include "ancients/nation/persian.ruleset"
+*include "ancients/nation/arab.ruleset"
+*include "ancients/nation/carthaginian.ruleset"
+*include "ancients/nation/viking.ruleset"
+*include "ancients/nation/welsh.ruleset"
+*include "ancients/nation/scottish.ruleset"
+*include "ancients/nation/irish.ruleset"
+*include "ancients/nation/ethiopian.ruleset"
+*include "ancients/nation/assyrian.ruleset"
+*include "ancients/nation/sumerian.ruleset"
+*include "ancients/nation/phoenician.ruleset"
+*include "ancients/nation/byzantium.ruleset"
+*include "ancients/nation/british.ruleset"
+*include "ancients/nation/hittite.ruleset"
+*include "ancients/nation/gallic.ruleset"
+*include "ancients/nation/aramean.ruleset"
+;
+; Nations not in the default ruleset:
+;
+*include "ancients/nation/hebrew.ruleset"
+*include "ancients/nation/armenian.ruleset"
+*include "ancients/nation/macedonian.ruleset"
+*include "ancients/nation/etruscan.ruleset"
+*include "ancients/nation/palmyrene.ruleset"
+*include "ancients/nation/illyrian.ruleset"
+*include "ancients/nation/frankish.ruleset"
+*include "ancients/nation/gothic.ruleset"
+*include "ancients/nation/iberian.ruleset"
+*include "ancients/nation/thracian.ruleset"
+;
+; observer and barbarians MUST go last in THIS order
+;
+*include "ancients/nation/barbarian.ruleset"

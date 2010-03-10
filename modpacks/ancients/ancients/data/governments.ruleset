@@ -1,0 +1,203 @@
+
+; Use the command "rulesetdir ancients" in the server to have freeciv
+; use this file.
+
+[datafile]
+description="Ancients governments data for Freeciv"
+options="1.9"
+
+[governments]
+when_anarchy="Anarchy"
+
+; Below: The individual government types, one per section.
+;
+; The actual tag used (the * in [government_*]) does not matter, except 
+; it must be unique within this file, and it may be used in debug 
+; output when reading this file.
+;
+; For the "official" rulesets, the order of these sections should not
+; be changed because that would break backward compatability with 
+; savegames.  (In particular, if Fundamentalism is added to default
+; ruleset, should be added at end.)
+;
+; Notes on fields:
+
+; name        = name of this government form as seen by user 
+; reqs        = requirements for this government (see README.effects)
+; graphic     = tag specifing preferred graphic
+; graphic_alt = alternate graphics tag if preferred is not found;
+;               should be a standard tag if preferred is not;
+;		otherwise may be "-"
+; ai_better   = AI will not consider this government for use if the
+;               government listed here is available
+
+; ruler_titles = ruler titles by nation, "-" is default, and non-matched 
+;	         nations are ignored 
+
+; helptext = optional help text string; should escape all raw newlines 
+;	     so that xgettext parsing works
+
+;------------------------------------------------------------------------
+[government_anarchy]
+
+name        = _("Anarchy")
+; No reqs
+graphic     = "gov.anarchy"
+graphic_alt = "-"
+
+ruler_male_title = _("Usurper")
+ruler_female_title = _("?female:Usurper")
+
+helptext = _("\
+Anarchy is simply the absence of any recognizable government.\
+ Citizens are disorganized and unproductive, and will spend all\
+ income as quickly as possible, rather than paying taxes or\
+ conducting research.\
+\n\n\
+Anarchy offers slightly less corruption than Despotism,\
+ but slightly more unhappiness.\
+")
+
+;------------------------------------------------------------------------
+[government_despotism]
+
+name        = _("Despotism")
+; No reqs
+graphic     = "gov.despotism"
+graphic_alt = "-"
+ai_better   = "Petty Monarchy"
+
+ruler_male_title = _("Lord")
+ruler_female_title = _("Lady")
+
+helptext = _("\
+Under Despotism, you are the absolute ruler of your people.  Your\
+ control over your citizens is maintained largely by martial law.\
+\n\n\
+Despotism suffers the highest level of corruption of all\
+ forms of government.\
+")
+
+;------------------------------------------------------------------------
+[government_petty_monarchy]
+
+name        = _("Petty Monarchy")
+reqs = { "type", "name", "range"
+         "tech", "Monarchy", "Player"
+       }
+graphic     = "gov.monarchy"
+graphic_alt = "-"
+ai_better   = "Imperial Monarchy"
+
+ruler_male_title = _("King")
+ruler_female_title = _("Queen")
+
+helptext = _("\
+Under a Petty Monarchy, a king or queen serves as a hereditary ruler\
+ for your government.\
+\n\n\
+A Petty Monarchy has corruption rates similar to a Republic in cities near\
+ the capital. However, corruption is rife in outlying provinces, so the\
+ Petty Monarchy is not able to manage large kingdoms well.\
+")
+
+;------------------------------------------------------------------------
+[government_imperial_monarchy]
+
+name        = _("Imperial Monarchy")
+reqs = { "type", "name", "range"
+         "tech", "Diplomacy", "Player"
+       }
+graphic     = "gov.monarchy"
+graphic_alt = "-"
+ai_better   = "Principate"
+
+ruler_male_title = _("Emperor")
+ruler_female_title = _("Empress")
+
+helptext = _("\
+Under an Imperial Monarchy, a emperor or empress serves as a hereditary ruler\
+ for your nation. Unlike the Petty Monarchy, an efficient bureaucracy\
+  allows management of a vast empire.\
+\n\n\
+An Imperial Monarchy suffers the same small amount of corruption that the\
+ Republic does. This corruption does not increase with distance from the\
+ capital\
+")
+
+;------------------------------------------------------------------------
+[government_republic]
+
+name        = _("Republic")
+reqs = { "type", "name", "range"
+         "tech", "Republic", "Player"
+       }
+graphic     = "gov.republic"
+graphic_alt = "-"
+ai_better   = "Principate"
+
+ruler_male_title = _("Consul")
+ruler_female_title = _("Consul")
+
+helptext = _("\
+Under a Republican government, citizens hold elections to select\
+ representatives who will govern them; since elected leaders must\
+ remain popular to remain in control, citizens are given a greater\
+ degree of freedom.  Citizens under the Republic become unhappy\
+ easily, but the self-sufficiency of your citizens allows high levels\
+ of trade.\
+\n\n\
+A Republic is not suitable for managing a large empire. If your Republic\
+ grows large you should consider changing to a Principate or an\
+ Imperial Monarchy.\
+\n\n\
+Cities under the Republic suffer a small amount of corruption.\
+")
+
+;------------------------------------------------------------------------
+[government_principate]
+
+name        = _("Principate")
+reqs = { "type", "name", "range"
+         "tech", "Principate", "Player"
+       }
+graphic     = "gov.republic"
+graphic_alt = "-"
+flags       = "Rapture_City_Growth"
+
+ruler_male_title = _("King")
+ruler_female_title = _("Queen")
+
+helptext = _("\
+A Principate is essentialy an Imperial Monarchy that retains some of\
+ the forms of a Republic. Under a Principate, a Princeps rules with near\
+ absolute authority and uses an efficient bureaucracy to manage a\
+ vast empire.\
+\n\n\
+A Principate suffers the same small amount of corruption that the\
+ Republic does. This corruption does not increase with distance from the\
+ capital\
+\n\n\
+")
+
+;------------------------------------------------------------------------
+[government_ancient_democracy]
+
+name        = _("Ancient Democracy")
+reqs = { "type", "name", "range"
+         "tech", "Literacy", "Player"
+       }
+graphic     = "gov.democracy"
+graphic_alt = "-"
+
+ruler_male_title = _("Prytanis")
+ruler_female_title = _("Prytanis")
+
+helptext = _("\
+Under an Ancient Democracy, an assembly of citizens governs directly\
+ by voting on issues.\
+ An Ancient Democracy offers the highest possible level of trade, but also\
+ offers the most potential for unhappiness. Due to the direct participatory\
+ nature of an Ancient Democracy, it does not scale up well to large empires.\
+ Do not switch to this government type if you already have a large empire!\
+")

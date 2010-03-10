@@ -1,0 +1,66 @@
+[nation_indian]
+
+name=_("Indian")
+plural=_("?plural:Indians")
+groups=_("Medieval"), _("Asian")
+legend=_("The cradle of Ancient Indian civilization lay in the Indus river\
+ valley in modern-day Pakistan.")
+leader=
+ "Ashoka",
+ "Chandragupta"
+leader_sex="Male", "Male"
+flag="india"
+flag_alt = "-"
+city_style = "Asian"
+
+ruler_titles = { "government",      "male_title",      "female_title"
+                 "Petty Monarchy",        _("Raja"),     _("Raja")
+                 "Imperial Monarchy",     _("Maharaja"), _("Maharaja")
+                 "Republic",        _("Mahatma"),      _("Mahatma")
+               }
+
+init_techs=""
+init_buildings=""
+init_government="Despotism"
+init_units=""
+civilwar_nations = "arab", "persian"
+
+cities =
+ "Delhi",
+ "Bombay",
+ "Madras",
+ "Bangalore",
+ "Calcutta",
+ "Lahore",
+ "Karachi",
+ "Ahmadabad",
+ "Kanpur",
+ "Hyderabad",
+ "Dacca",
+ "Lucknow",
+ "Benares",
+ "Chandrigarh",
+ "Rawalpindi",
+ "Colombo",
+ "Madurai",
+ "Coimbatore",
+ "Calicut",
+ "Trivandrum",
+ "Nagpur",
+ "Chittagong",
+ "Multan",
+ "Amritsar",
+ "Srinagar",
+ "Agra",
+ "Bhopal",
+ "Patna",
+ "Surat",
+ "Jaipur",
+ "Varanasi",
+ "Allahabad",
+ "Indore",
+ "Mysore",
+ "Raipur",
+ "Gaya",
+ "Cawnpore",
+ "Poona (hills)"

@@ -1,0 +1,34 @@
+[nation_sumerian]
+
+name=_("Sumerian")
+plural=_("?plural:Sumerians")
+groups=_("Asian"), _("Mesopotamian")
+legend=_("Sumer controlled southern Mesopotamia until the rise of\
+ Babylonia. Tablets of Sumerian writing some 5500 years old have been\
+ found, pre-dating every other writing in history.")
+leader=
+ "Gilgamesh",
+ "Lagislazuli",
+ "Urukagina",
+ "Urnammu",
+ "Ibissin"
+leader_sex="Male", "Male", "Male", "Male", "Male"
+flag = "sumeria"
+flag_alt = "-"
+city_style = "Babylonian"
+
+ruler_titles = { "government",	"male_title",	"female_title"
+		 "Petty Monarchy", _("Lugal"),	 _("Lugal")
+	       } 
+
+init_techs=""
+init_buildings=""
+init_government="Despotism"
+init_units=""
+civilwar_nations="babylonian", "assyrian", "persian", "arab"
+
+cities =
+  "Uruk", "Eridu", "Ur", "Lagash", "Nippur", "Umma",
+  "Larsa", "Kish", "Adab", "Susa", "Mari", "Hit", 
+  "Babylon", "Dilmun", "Eschnunna", "Der", "Sippur",
+  "Karkemish", "Ebla", "Arbel", "Larsa", "Cyprus"

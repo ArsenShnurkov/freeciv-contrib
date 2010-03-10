@@ -1,0 +1,188 @@
+[nation_english]
+
+name=_("English")
+plural=_("?plural:English")
+groups=_("Medieval"), _("European"), _("Atlantic")
+conflicts_with="german"
+legend=_("England was finally unified by Alfred the Great of Wessex\
+ in the late\
+ 9th century AD, only to be conquered by William of Normandy a century\
+ later, in the last successful invasion of the country.")
+leader=
+ ; Bretwaldas, with at most one per Kingdom
+ "Aelle of Sussex",
+ "Ceawlin Cerdicing", ; Wessex
+ "Aethelberht Oiscing", ; Kent
+ "Raedwald Wuffing", ; East Anglia
+ "Edwin of Northumbria",
+ ; "Oswald of Northumbria",
+ ; "Oswiu of Northumbria",
+ ; "Wulfhere Iceling", ; Mercia
+ ; "Aethelbald Iceling", ; Mercia
+ "Offa Iceling", ; Mercia
+ ; "Egbert Cerdicing", ; Wessex
+ ; Later kings
+ "Alfred the Great",		; Cerdicing, Wessex
+ "Richard Lionheart",
+ "Henry II",
+ "Edward Longshanks",
+ ; Queens
+ "Seaxburh of Wessex", ; widow of Cenwalh, the only Queen in a regnal list
+ "Athelflaed of Mercia"  ; A Queen in all but name
+leader_sex=
+ "Male", "Male", "Male", "Male", "Male",
+ ; "Male", "Male", "Male", "Male",
+ "Male",
+ ; "Male", "Male",
+ "Male", "Male", "Male", "Male",
+ "Female", "Female"
+flag="england"
+flag_alt = "united_kingdom"
+city_style = "European"
+ruler_titles = { "government",        "male_title",    "female_title"
+                 "Anarchy",           _("Leod"),       _("Cwen")
+                 "Despotism",         _("Hlaford"),    _("Hlaefdige")
+                 "Republic",          _("Ealdorman"),  _("Ealdorman")
+                 "Principate",        _("Ealdorman"),  _("Ealdorman")
+                 "Petty Monarchy",    _("Cyning"),     _("Theodcwen")
+                 "Imperial Monarchy", _("Bretwalda"),  _("Bretwalda")
+               }
+
+init_techs=""
+init_buildings=""
+init_government="Despotism"
+init_units=""
+civilwar_nations = "cornish"
+
+cities =
+ ; Heptarchy capitals
+ "Canterbury (ocean,forest)", ; Kent
+ "York (plains)", ; Deira
+ "Winchester (forest)", ; Wessex
+ "London (plains,ocean,river)", ; East Saxons
+ "Tamworth (!ocean)", ; Mercia
+ "Chichester (ocean)", ; South Saxons
+ "Dunwich (ocean,grassland,!hills,!mountains)", ; East Anglia, actually a bishopric
+ ; Other early sites
+ "Bamburgh (hills,mountains,ocean)", ; Bernicia
+ ; Big towns ranked by mints
+ ; (after An Atlas of Anglo-Saxon England, Hill 1981)
+ "Lincoln (!hills,!mountains)",
+ "Chester (ocean)",
+ "Thetford (grassland,!hills,!river,!mountains)",
+ "Exeter",
+ "Stamford (swamp,!hills,!mountains)",
+ "Norwich (grassland,!hills,!mountains)",
+ "Southwark (river,plains)",
+ "Oxford (plains,river,!ocean)",
+ "Lewes (forest,ocean)",
+ "Shrewsbury (hills,!ocean)",
+ "Cambridge (swamp,!hills,!mountains)",
+ "Dover (ocean,forest)",
+ "Huntingdon (!ocean,!hills,!mountains)",
+ "Ipswich (grassland,ocean,!hills,!mountains)",
+ "Wallingford (hills,river,!ocean)",
+ "Colchester (forest,ocean,!hills,!mountains)",
+ "Worcester (river,!ocean)",
+ "Bedford (!ocean,!hills,!mountains)",
+ "Gloucester (forest,river)",
+ "Hereford (hills,mountains,!ocean)",
+ "Ilchester (swamp)",
+ "Wilton",
+ "Leicester (!ocean)",
+ ; Other towns in The Burghal Hideage, most hides first
+ "Warwick (!ocean)",
+ "Wareham (ocean)",
+ "Buckingham (!ocean)",
+ "Cricklade",
+ "Malmesbury",
+ "Bath",
+ "Sashes (river)",
+ "Bridport",
+ "Burpham",
+ "Chisbury",
+ "Shaftesbury (forest)",
+ "Langport (swamp)",
+ "Eashing",
+ "Portchester (ocean)",
+ "Watchet (ocean)",
+ "Hastings (forest,ocean)",
+ "Christchurch (ocean)",
+ "Axbridge (swamp,ocean,hills)",
+ "Pilton (ocean,hills)",
+ "Eorpeburnan",
+ "Halwell",
+ "Southampton (forest,ocean)",
+ ; Other 'Major Towns' according to Hill, roughly S to N and E to W.
+ "Rochester (forest,ocean,!mountains)",
+ "Maldon (ocean,forest,!mountains)",
+ "Hertford (!mountains)",
+ "Guildford (plains)",
+ "Northampton (!ocean)",
+ "Nottingham (forest)",
+ "Derby (hills,forest,!ocean)",
+ "Winchcombe (forest)",
+ "Stafford (!ocean)",
+ "Dorchester",
+ "Bristol (ocean)",
+ "Taunton",
+ "Totnes (hills,ocean)",
+ "Barnstaple (hills,ocean)",
+ "Lydford (hills)",
+ ; Modern English towns.
+ "Westminister (plains,river)",
+ "Birmingham (!ocean)",
+ "Liverpool (ocean)",
+ "Manchester",
+ "Leeds",
+ "Newcastle",
+ "Bradford",
+ "Middlesborough",
+ "Sheffield",
+ "Coventry",
+ "Brighton (ocean)",
+ "Portsmouth (ocean)",
+ "Hull (river,ocean)",
+ "Plymouth (ocean,hills)",
+ "Bournemouth (ocean)",
+ "Sunderland",
+ "Stoke-on-Trent (river)",
+ "Bolton",
+ "Reading (forest,river)",
+ "Blackpool (river)",
+ "Stratford-upon-Avon",
+ "Durham",
+ "Eastleigh",
+ "Folkestone (river)",
+ "Kettering",
+ "King's Lynn (ocean,swamp)",
+ "Kidderminster",
+ "Leek",
+ "Lutterworth",
+ "Macclesfield",
+ "Market Bosworth",
+ "Market Harborough",
+ "Melton Mowbray",
+ "Nuneaton",
+ "Oakham",
+ "Peterborough",
+ "Pickering (hills,plains)",
+ "Preston",
+ "Poole (ocean)",
+ "Ramsgate (ocean)",
+ "Southend (forest,ocean)",
+ "Stevenage",
+ "Ashford",
+ "Swindon (plains,!ocean)",
+ "Torquay (ocean)",
+ "Wolverhampton",
+ "Weymouth (ocean)",
+ "Yeovil",
+ "Halifax",
+ "Oldham",
+ "Rochdale",
+ "Blackburn",
+ "Burnley",
+ "Lancaster",
+ "Salisbury (plains,!ocean)",
+ "Cowes"

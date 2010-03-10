@@ -1,0 +1,1574 @@
+
+; Use the command "rulesetdir ancients" in the server to have freeciv
+; use this file.
+;
+; You should sort role units from worst to better, as often the best
+; available role unit of a given sort will be picked by choosing
+; the first available (not obsolete) such unit, or by picking the last
+; such unit directly. When determining starting units, the first 
+; unit with the relevant role that the player can build will be chosen.
+; If no such unit can be found (eg Explorers that require Seafaring),
+; then the first unit with this role will be chosen.
+
+[datafile]
+description="Ancients unit_type data for Freeciv"
+options="1.9"
+
+[veteran_system]
+; What are the names of the levels?
+veteran_names = _("green"), _("veteran"), _("hardened"), _("elite")
+
+; The percentage chance of increasing level through combat
+veteran_raise_chance = 50, 33, 20, 0
+
+; Power factors are as a percentage.
+; +50% is represented by 150
+veteran_power_fact = 100, 150, 175, 200
+
+; The percentage chance of a settler/engineer increasing level through
+; performing useful work (per turn)
+veteran_work_raise_chance = 5, 3, 1, 0
+
+; The chances of a trireme being lost at sea when not adjacent to a
+; land tile.
+veteran_highseas_loss_pct = 50, 25, 5, 0
+
+; The additional number of movement points granted for different veteran
+; levels.  These are thirds of points, so to increase movement
+; by a whole point 3 must be specified.
+veteran_move_bonus = 0, 0, 0, 0
+
+; Below: The individual units, one per section.
+;
+; The number can be variable, up to 200.  
+; However for the "official" rulesets, units should not be removed 
+; because that would break backward compatability with savegames.
+;
+; The order here matters: later units are considered "better" for
+; a given flag or role.  
+;
+; The actual tag used (the * in [unit_*]) does not matter, except 
+; it must be unique within this file, and it may be used in debug 
+; output when reading this file.
+;
+; ** Fields **
+;
+; name          = name as seen by user 
+; graphic       = tag specifing preferred graphic
+; graphic_alt	= tag for alternate garphic if preferred graphic is not 
+;		  present; especially if preferred graphic is non-standard, 
+;		  this should be a standard tag.  Otherwise can use eg "-" 
+;		  for no alternate graphic.
+; tech_req      = required advance, names from techs.ruleset, or special:
+;                 "None" => available from start
+; impr_req	= required city improvement, names from buildings.ruleset
+; gov_req       = required government, names from governments.ruleset
+; obsolete_by   = can be upgraded to and made obsolete by another unit by name
+; class         = "Land", "Sea", "Air", "Helicopter", "Missile" or "Nuclear"
+; transport_cap = Number of units (ground, or air/missiles, depending on flags)
+; fuel          = number of turns air units can fly before they crash. For
+;                 barbarians this is used as lifetime instead. If this is zero,
+;                 the unit has unlimited fuel, despite flying.
+; uk_*          = upkeep costs, these are used as base values in the game
+; flags         = special flag strings
+; roles         = special role strings
+; sound_move	= optional sound effect when the unit moves
+; sound_move_alt= optional alternative sound effect if above not
+;		  supported in client
+; sound_fight	= optional sound effect when the unit fights
+; sound_fight_alt= optional alternative sound effect if above not
+;		   supported in client
+; helptext	= optional help text string; should escape all raw newlines 
+;		  so that xgettext parsing works
+;
+; ** Flags **
+;
+; "HelpWonder"	= can help build wonders
+; "TradeRoute"	= can establish trade routes
+; "Missile"	= (air only) some buildings and units have higher defence 
+;                  against these
+; "IgZOC"	= (land only) ignore Zones of Control (ZOC)
+; "NonMil"	= a non-military unit, does not cause unhappiness
+; "IgTer"	= ignore terrain/road/rail, treat every tile as 1/3 move cost
+; "Carrier"	= can transport air and missile units, but not land units
+; "Missile_Carrier" = can transport only missiles, but no aircraft or land units
+; "OneAttack"	= can only make a single attack, regardless of movement points
+; "Pikemen"	= double defence power against "Horse" flag units
+; "Horse"	= (no effect)
+; "IgWall"	= ignore effect of city walls
+; "FieldUnit"	= cause unhappiness even when not being aggressive
+; "AEGIS"	= fivefold increased defence against air attacks and missiles
+; "Fighter"	= can attack air units (no other units can normally do this)
+; "Marines"	= (land only) can attack from transports
+; "Partial_Invis" = visible only to adjancent units; does not hide transported
+;		  units other than missiles
+; "Settlers"	= can irrigate and build roads
+; "Diplomat"	= can do diplomat actions (see diplchance server option)
+; "Spy"		= can do poison and sabotage, _must_ be "Diplomat" also
+; "Trireme"	= (sea only) sinks on high seas, lots of special rules
+; "Nuclear"	= nuke!
+; "Transform"	= can transform terrain
+; "Paratroopers"= (land only) can paradrop
+; "Airbase"	= (land only) can produce airbases
+; "Cities"	= can disband to produce a city
+; "IgTired"	= ignore tired penalty when attacking
+; "No_Land_Attack" = (sea only) cannot attack targets on land
+; "AddToCity"	= can disband to add a single point of population to a city
+;		  (see cities.ruleset for limitation of this ability)
+; "Fanatic"	= can only be built by governments that allow them
+;		  (see data/civ2/governments.ruleset, Fanaticism government)
+; "Unique"	= a player can only have one of these units in the game at
+;		  the same time; barbarians cannot use this at present
+; "GameLoss"	= losing one of these units means you lose the game, but it
+;		  is produced without homecity and upkeep
+; "Unbribable"	= this unit cannot be bribed
+; "Undisbandable" = this unit cannot be disbanded, will not drown, and will not
+;		  disband due to lack of shields to upkeep it in homecity;
+;		  if not given enough food to upkeep it, homecity will shrink 
+;		  every turn it cannot do so, however
+; "SuperSpy"	= this unit always wins diplomatic contests, that is, unless
+;		  it encounters another SuperSpy, in which case defender wins;
+;		  can also be used on non-diplomat units, in which case it can
+;		  protect cities from diplomats; also 100% spy survival chance
+; "NoHome"	= this unit has no homecity and will be free of all upkeep, and
+;		  therefore will not revolt along with its city of origin should
+;		  it be incited
+; "NoVeteran"   = this unit cannot become veteran
+; "Bombarder"   = this unit cannot kill other units, only damage them, but
+;                 also is not harmed by return fire when attacking; the field
+;                 bombard_rate regulates its number of shots
+; "CityBuster"  = this unit has double firepower against cities
+; "NoBuild"     = this unit cannot be built
+; "BadWallAttacker"	= the firepower of this unit is set to 1 if
+;                 attacking a city
+;		  defended by a city wall (or other city building defense)
+; "BadCityDefender"	= if attacked while in a city, firepower is set to 1
+;		  and firepower of attacker is doubled (the Pearl Harbour
+;                 rule)
+;
+; Following flag strings require extra fields:
+;  "Paratroopers"
+;   paratroopers_range = the maximal range the unit can be paradropped to
+;   paratroopers_mr_req = the move rate which is required at least for
+;                         paradropping
+;   paratroopers_mr_sub = the move rate which is subtracted after paradropping
+;  "Bombarder"
+;   bombard_rate = the number of shots fired at enemy units when attacking
+;
+; ** Roles **
+;
+; "FirstBuild"	= first to be built when city founded
+; "Explorer"	= initial explorer unit (only one unit can have this flag)
+; "Hut"		= can be found in a hut
+; "HutTech"	= can be found in a hut, but its techs required
+; "Partisan"	= can be created as a partisan (only one unit can have this 
+;                 flag), see end of this file for its tech requirements option
+; "DefendOk"	= AI hint: ok for defending with
+; "DefendGood"	= AI hint: good for defending with
+; "AttackFast"	= AI hint: quick attacking unit (unused)
+; "AttackStrong"= AI hint: strong attacker (unused)
+; "Ferryboat"	= AI hint: useful for ferrying
+; "Barbarian"	= can be created as barbarian
+; "BarbarianTech" = can be created as barbarian, if someone has
+;		    researched its tech requirements
+; "BarbarianBoat" = can be created as barbarian
+; "BarbarianBuild" = can be built by barbarians
+; "BarbarianBuildTech" = can be built by barbarians if someone has
+;		         researched its tech requirements
+; "BarbarianLeader" = this unit is the barbarian leader (only one)
+; "BarbarianSea" = can be created as a sea barbarian
+; "BarbarianSeaTech" = can be created as a sea barbarian if someone
+;		       has researched its tech requirements
+; "Cities"	= can disband to produce a city
+; "Settlers"	= can irrigate and build roads
+; "GameLoss"	= losing one of these units means you lose the game, but it
+;		  is produced without homecity and upkeep
+; "Diplomat"	= can do diplomat actions (see diplchance server option)
+; "Hunter"      = AI hint: good for hunting other units
+
+[unit_settlers]
+name          = _("Settlers")
+class         = "Land"
+tech_req      = "None"
+obsolete_by   = "None"
+graphic       = "u.settlers"
+graphic_alt   = "-"
+sound_move    = "m_settlers"
+sound_move_alt = "m_generic"
+sound_fight   = "f_settlers"
+sound_fight_alt = "f_generic"
+build_cost    = 40
+pop_cost      = 1
+attack        = 0
+defense       = 1
+hitpoints     = 10
+firepower     = 1
+move_rate     = 1
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 0
+uk_shield     = 1
+uk_food       = 1
+uk_gold       = 0
+flags         = "NonMil", "AddToCity", "Cities", "NoVeteran"
+roles         = "Cities"
+helptext      = _("\
+This unit represents a large body of settlers dedicated to the\
+ enlargement of your empire, or perhaps merely kicked out of your\
+ existing cities due to overcrowding or an uncouth lifestyle.\
+\n\n\
+Use settlers to found cities.\
+\n\n\
+ Upkeep for Settlers is in food\
+ as well as production, and a Settler can die if its supporting city\
+ runs out of food.\
+\n\n\
+")
+
+[unit_worker]
+name          = _("Workers")
+class         = "Land"
+tech_req      = "Surveying"
+obsolete_by   = "None"
+graphic       = "u.worker"
+graphic_alt   = "u.settlers" ; for compatibility
+sound_move    = "m_worker"
+sound_move_alt = "m_generic"
+sound_fight   = "f_worker"
+sound_fight_alt = "f_generic"
+build_cost    = 30
+pop_cost      = 0
+attack        = 0
+defense       = 1
+hitpoints     = 10
+firepower     = 1
+move_rate     = 1
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 0
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = "Settlers", "NonMil", "NoVeteran"
+roles         = "Settlers"
+helptext      = _("\
+Workers are one of the key units in the game.  They can be used to\
+ irrigate land and build roads, and\
+ mines.\
+ \n\n\
+Severl Workers may work together to decrease the\
+ amount of time required for long projects.  If two or more Workers\
+ and/or Settlers are both working on the same task in the same square,\
+ their efforts will be added together each turn until the task is\
+ finished.  Be careful not to dedicate too many workers to one task,\
+ though; excess effort can be wasted, and a group of Workers and/or Settlers\
+ is highly vulnerable to enemy attacks.\
+")
+
+[unit_diplomat]
+name          = _("Diplomat")
+class         = "Land"
+tech_req      = "Code of Laws"
+obsolete_by   = "None"
+graphic       = "u.diplomat"
+graphic_alt   = "-"
+sound_move    = "m_diplomat"
+sound_move_alt = "m_generic"
+sound_fight   = "f_diplomat"
+sound_fight_alt = "f_generic"
+build_cost    = 30
+pop_cost      = 0
+attack        = 0
+defense       = 0
+hitpoints     = 10
+firepower     = 1
+move_rate     = 3
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 0
+uk_shield     = 0
+uk_food       = 0
+uk_gold       = 0
+flags         = "Diplomat", "IgZOC", "NonMil"
+roles         = "Diplomat"
+helptext      = _("\
+This unit represents a single diplomat and his/her entourage.\
+\n\n\
+Use diplomats for honest diplomatic functions such as establishing\
+ embassies, or use their immunity to zones of control to snoop around\
+ behind enemy lines and reveal your rivals' lands to your own mighty\
+ self.
+")
+
+[unit_spy]
+name          = _("Spy")
+class         = "Land"
+tech_req      = "Espionage"
+obsolete_by   = "None"
+graphic       = "u.spy"
+graphic_alt   = "-"
+sound_move    = "m_spy"
+sound_move_alt = "m_generic"
+sound_fight   = "f_spy"
+sound_fight_alt = "f_generic"
+build_cost    = 50
+pop_cost      = 0
+attack        = 0
+defense       = 0
+hitpoints     = 10
+firepower     = 1
+move_rate     = 3
+vision_radius_sq = 5
+transport_cap = 0
+fuel          = 0
+uk_happy      = 0
+uk_shield     = 0
+uk_food       = 0
+uk_gold       = 0
+flags         = "Diplomat", "IgZOC", "NonMil", "Spy"
+roles         = "Diplomat"
+helptext      = _("\
+This unit represents a single spy, plus enough merchants, minstrels,\
+ or other miscreants to provide a plausible cover.\
+\n\n\
+Use spys for spying on your rivals. Deny knowing them when they get\
+ caught!\
+")
+
+[unit_caravan]
+name          = _("Caravan")
+class         = "Land"
+tech_req      = "Caravan"
+obsolete_by   = "None"
+graphic       = "u.caravan"
+graphic_alt   = "-"
+sound_move    = "m_caravan"
+sound_move_alt = "m_generic"
+sound_fight   = "f_caravan"
+sound_fight_alt = "f_generic"
+build_cost    = 50
+pop_cost      = 0
+attack        = 0
+defense       = 1
+hitpoints     = 10
+firepower     = 1
+move_rate     = 2
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 0
+uk_shield     = 0
+uk_food       = 0
+uk_gold       = 0
+flags         = "TradeRoute", "HelpWonder", "IgZOC", "NonMil"
+roles         = ""
+helptext      = _("\
+This unit represents a caravan laden with valuable trade goods, plus\
+ a very small defensive guard.\
+\n\n\
+Send caravans to distant cities to establish trade routes and boost\
+ your yearly income.\
+")
+
+[unit_explorer]
+name          = _("Explorer")
+class         = "Land"
+tech_req      = "None"
+obsolete_by   = "None"
+graphic       = "u.explorer"
+graphic_alt   = "-"
+sound_move    = "m_explorer"
+sound_move_alt = "m_generic"
+sound_fight   = "f_explorer"
+sound_fight_alt = "f_generic"
+build_cost    = 30
+pop_cost      = 0
+attack        = 0
+defense       = 1
+hitpoints     = 10
+firepower     = 1
+move_rate     = 3
+vision_radius_sq  = 5
+transport_cap = 0
+fuel          = 0
+uk_happy      = 0
+uk_shield     = 0
+uk_food       = 0
+uk_gold       = 0
+flags         = "IgZOC", "NonMil"
+roles         = "Explorer"
+helptext      = _("\
+This unit represents one renowned explorer, along with a whole host\
+ of underpaid bearers and overworked huskies.\
+\n\n\
+Use explorers to survey the lands around your early settlements, so\
+ you can grab the best spots for founding colonies and beat your\
+ rivals at exploiting the undeveloped tribes scattered around the\
+ map.\
+")
+
+[unit_leader]
+name          = _("Leader")
+class         = "Land"
+tech_req      = "None"
+obsolete_by   = "None"
+graphic       = "u.leader"
+graphic_alt   = "u.explorer"
+sound_move    = "m_leader"
+sound_move_alt = "m_generic"
+sound_fight   = "f_leader"
+sound_fight_alt = "f_generic"
+build_cost    = 10
+pop_cost      = 0
+attack        = 0
+defense       = 2
+hitpoints     = 20
+firepower     = 1
+move_rate     = 2
+vision_radius_sq  = 5
+transport_cap = 0
+fuel          = 0
+uk_happy      = 0
+uk_shield     = 0
+uk_food       = 0
+uk_gold       = 0
+flags         = "IgZOC", "NonMil", "NoBuild", "NoHome", "SuperSpy", 
+                "Undisbandable", "Unbribable", "GameLoss", "Unique",
+                "NoVeteran"
+roles         = "GameLoss"
+helptext      = _("\
+This is you. If you lose this unit, you lose the game. So don't.\
+")
+
+[unit_barbarian_leader]
+name          = _("Barbarian Leader")
+class         = "Land"
+tech_req      = "None"
+obsolete_by   = "None"
+graphic       = "u.barbarian_leader"
+graphic_alt   = "u.explorer"
+sound_move    = "m_barbarian_leader"
+sound_move_alt = "m_generic"
+sound_fight   = "f_barbarian_leader"
+sound_fight_alt = "f_generic"
+build_cost    = 40
+pop_cost      = 0
+attack        = 0
+defense       = 0
+hitpoints     = 10
+firepower     = 1
+move_rate     = 2
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 0
+uk_shield     = 0
+uk_food       = 0
+uk_gold       = 0
+flags         = "IgZOC", "NonMil", "Unbribable",
+                "Undisbandable", "SuperSpy", "NoHome", "NoBuild"
+roles         = "BarbarianLeader"
+helptext      = _("\
+When barbarian leader is killed on a tile without any defending units, \
+the 100 gold ransom is paid, but only to land units.\
+")
+
+[unit_militia]
+name          = _("Militia")
+class         = "Land"
+tech_req      = "None"
+obsolete_by   = "None"
+graphic       = "u.militia"
+graphic_alt   = "u.warriors"
+sound_move    = "m_militia"
+sound_move_alt = "m_generic"
+sound_fight   = "f_militia"
+sound_fight_alt = "f_generic"
+build_cost    = 5
+pop_cost      = 0
+attack        = 1
+defense       = 1
+hitpoints     = 10
+firepower     = 1
+move_rate     = 1
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = ""
+roles         = "DefendOk", "FirstBuild"
+helptext      = _("\
+This cheap unit represents a city's untrained citizen militia.\
+\n\n\
+Use it when you need minimal security fast, but do not rely on it\
+ for critical missions.\
+\n\n\
+Notice that the low movement rate makes it have difficulty keeping\
+ pace with your field units. Use it for static defense, and replace\
+ it with something stronger as soon as you can.\
+")
+
+[unit_levy]
+name          = _("Levy")
+class         = "Land"
+tech_req      = "None"
+obsolete_by   = "None"
+graphic       = "u.levy"
+graphic_alt   = "u.warriors"
+sound_move    = "m_levy"
+sound_move_alt = "m_generic"
+sound_fight   = "f_levy"
+sound_fight_alt = "f_generic"
+build_cost    = 20
+pop_cost      = 0
+attack        = 2
+defense       = 2
+hitpoints     = 20
+firepower     = 2
+move_rate     = 2
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = ""
+roles         = "DefendGood"
+helptext      = _("\
+This unit is the standard formation of massed spearmen used\
+ throughout the more civilized portions of the ancient world.\
+\n\n\
+This unit will be greatly outclassed by phalanxes of hoplites or\
+ pikemen, or by legionnaires, but otherwise is the mainstay of most\
+ ancient armies. Use it primarily for garrisons and frontier\
+ defenses. In sufficient numbers they may also be useful on the\
+ offensive, whenever superior troops are not available.\
+")
+
+[unit_marines]
+name          = _("Marines")
+class         = "Land"
+tech_req      = "Tactics"
+obsolete_by   = "Warband"
+graphic       = "u.marines"
+graphic_alt   = "-"
+sound_move    = "m_marines"
+sound_move_alt = "m_generic"
+sound_fight   = "f_marines"
+sound_fight_alt = "f_generic"
+build_cost    = 20
+pop_cost      = 0
+attack        = 2
+defense       = 2
+hitpoints     = 20
+firepower     = 2
+move_rate     = 2
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = "Marines"
+roles         = "DefendOk", "BarbarianSeaTech"
+helptext      = _("\
+Some ancient states, such as Imperial Rome, had units specially\
+trained as marines.\
+\n\n\
+In the ancient world such troops were most often used for shipboard\
+ combat, and it is not clear that their aptitude for amphibious\
+ assault was substantially superior to that of other infantry types\
+ of the period. But since shipboard combat is not simulated in\
+ FreeCiv this unit type is provided mostly for color, and we gave\
+ them the modern amphibious ability to give you a reason to build\
+ them.\
+")
+
+[unit_archers]
+name          = _("Archers")
+class         = "Land"
+tech_req      = "Improved Bow"
+obsolete_by   = "None"
+graphic       = "u.archers"
+graphic_alt   = "-"
+sound_move    = "m_archers"
+sound_move_alt = "m_generic"
+sound_fight   = "f_archers"
+sound_fight_alt = "f_generic"
+build_cost    = 20
+pop_cost      = 0
+attack        = 2
+defense       = 2
+hitpoints     = 10
+firepower     = 3
+move_rate     = 2
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = ""
+roles         = "Hut", "BarbarianBuild"
+helptext      = _("\
+This is a formation of massed archers.\
+\n\n\
+Archers work best when added to a stack in a city or fortification\
+ to provide a fairly cheap counterattacking force. They should also\
+ prove useful for mopping up enemy light troops that are not too\
+ heavily fortified.\
+\n\n\
+Archers have a higher firepower but lower hit points than other\
+ infantry of similar cost, so you may find them deadly but fragile.\
+")
+
+[unit_catapult]
+name          = _("Catapult")
+class         = "Land"
+tech_req      = "Catapult"
+obsolete_by   = "None"
+graphic       = "u.catapult"
+graphic_alt   = "-"
+sound_move    = "m_catapult"
+sound_move_alt = "m_generic"
+sound_fight   = "f_catapult"
+sound_fight_alt = "f_generic"
+build_cost    = 20
+pop_cost      = 0
+attack        = 2
+defense       = 1
+hitpoints     = 10
+firepower     = 2
+move_rate     = 1
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = "OneAttack"
+roles         = "AttackStrong"
+helptext      = _("\
+This unit is a battery of semi-portable bolt throwers.\
+\n\n\
+Due to its low movement rate, this unit will be most useful when\
+ placed in cities or fortifications for fighting off besiegers, but\
+ it needs to be stacked with infantry to defend it.\
+\n\n\
+For attacking fortified positions, use the stone-throwing onager or\
+ trebuchet instead.\
+")
+
+[unit_auxiliaries]
+name          = _("Auxiliaries")
+class         = "Land"
+tech_req      = "Principate"
+obsolete_by   = "Warband"
+graphic       = "u.auxiliaries"
+graphic_alt   = "u.warriors"
+sound_move    = "m_auxiliaries"
+sound_move_alt = "m_generic"
+sound_fight   = "f_auxiliaries"
+sound_fight_alt = "f_generic"
+build_cost    = 20
+pop_cost      = 0
+attack        = 2
+defense       = 2
+hitpoints     = 20
+firepower     = 2
+move_rate     = 3
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = ""
+roles         = "DefendOk", "HutTech", "BarbarianTech", "BarbarianBuildTech"
+helptext      = _("\
+This unit represents Roman auxiliaries.\
+\n\n\
+Auxiliaries are more lightly armed and armored than legionnaires,\
+ which leaves them weaker but more mobile, as well as cheaper.\
+\n\n\
+Use auxiliaries for operations in poor terrain, or to pad out your\
+ army of expensive legionnaires with cheaper troops.\
+")
+
+[unit_guerillas]
+name          = _("Guerillas")
+class         = "Land"
+tech_req      = "Guerilla Warfare"
+obsolete_by   = "None"
+graphic       = "u.guerillas"
+graphic_alt   = "u.partisan"
+sound_move    = "m_guerillas"
+sound_move_alt = "m_generic"
+sound_fight   = "f_guerillas"
+sound_fight_alt = "f_generic"
+build_cost    = 20
+pop_cost      = 0
+attack        = 2
+defense       = 2
+hitpoints     = 10
+firepower     = 1
+move_rate     = 3
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = "IgZOC"
+roles         = "DefendOk", "Partisan"
+helptext      = _("\
+The only thing modern about guerilla warfare is the name, and this\
+ unit is the ancient manifestation of the familiar modern phenomenon.\
+\n\n\
+Guerillas are faster than the heavier infantry types and can move\
+ through enemy zones of control, but their firepower and hit points\
+ are reduced as a result for their need to travel light and their\
+ generally inferior arms and armor compared to conventional forces.\
+\n\n\
+Guerillas may appear automatically whenever an opponent captures\
+ one of your cities, but only if the following conditions are met:\
+\n\n\
+  o At least one civilization must have discovered Guerilla Warfare.\
+\n\n\
+  o Your civilization must have discovered Leadership.\
+\n\n\
+  o The city must be one that you founded, rather than captured.\
+\n\n\
+  o Not all government types support Guerillas.\
+\n\n\
+Use them as you would expect guerillas to operate: move fast,\
+ pillage, hit an easy target, or seize an unguarded city, but never\
+ try to stand up to an enemy army in the field.\
+")
+
+[unit_spear_phalanx]
+name          = _("Spear Phalanx")
+class         = "Land"
+tech_req      = "Bronze Working"
+obsolete_by   = "Pike Phalanx"
+graphic       = "u.spearphalanx"
+graphic_alt   = "u.phalanx"
+sound_move    = "m_spearphalanx"
+sound_move_alt = "m_generic"
+sound_fight   = "f_spearphalanx"
+sound_fight_alt = "f_generic"
+build_cost    = 30
+pop_cost      = 0
+attack        = 3
+defense       = 3
+hitpoints     = 20
+firepower     = 2
+move_rate     = 2
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = ""
+roles         = "DefendGood"
+helptext      = _("\
+This is a phalanx of heavily armed hoplites as commonly used in\
+ ancient Greece.\
+\n\n\
+It is more robust than the levy, but must eventually succumb to\
+ pikes and legionnaires. Meanwhile, it is useful for defending cities\
+ and fortifications, for guarding borders, and for attacks against\
+ weaker units.\
+\n\n\
+Unlike the standard game, this unit is equally competent in both\
+ attack and defense, since the tactics of ancient battles usually\
+ called for the two sides to charge one another, regardless of which\
+ side was the 'attacker' at the higher scale of operations.\
+")
+
+[unit_warband]
+name          = _("Warband")
+class         = "Land"
+tech_req      = "Dark Age"
+obsolete_by   = "Men-at-Arms"
+graphic       = "u.warband"
+graphic_alt   = "u.warriors"
+sound_move    = "m_warband"
+sound_move_alt = "m_generic"
+sound_fight   = "f_warband"
+sound_fight_alt = "f_generic"
+build_cost    = 30
+pop_cost      = 0
+attack        = 3
+defense       = 3
+hitpoints     = 10
+firepower     = 3
+move_rate     = 3
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = ""
+roles         = "DefendGood",  "HutTech",
+                "BarbarianTech", "BarbarianSeaTech", "BarbarianBuildTech"
+helptext      = _("\
+This is a large body of barbarian infantry, who charge impetuously\
+ with spear, axe, and a variety of other nasty implements, often\
+ designed for throwing as well as wielding in hand-to-hand combat.\
+\n\n\
+The warband unit has attack and defense ratings similar to a spear\
+ phalanx, but has a raised firepower and reduced hit points to\
+ reflect the impetuousness of its initial charge and undisciplined\
+ brittleness thereafter. It is therefore more suitable as an\
+ attacker than as a defender.\
+\n\n\
+The warband also has a slightly raised movement rating, increasing\
+ its mobility in poor terrain or allowing a devastating rampage if\
+ ever it breaks into the heart of a peaceful civilization.\
+")
+
+[unit_pike_phalanx]
+name          = _("Pike Phalanx")
+class         = "Land"
+tech_req      = "Tactics"
+obsolete_by   = "Legionaires"
+graphic       = "u.pikephalanx"
+graphic_alt   = "u.pikemen"
+sound_move    = "m_pikephalanx"
+sound_move_alt = "m_generic"
+sound_fight   = "f_pikephalanx"
+sound_fight_alt = "f_generic"
+build_cost    = 40
+pop_cost      = 0
+attack        = 4
+defense       = 4
+hitpoints     = 20
+firepower     = 2
+move_rate     = 2
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = ""
+roles         = "DefendGood", "AttackStrong"
+helptext      = _("\
+This is a phalanx of massed pikemen of the Macedonian type.\
+\n\n\
+It is more deadly than the spear phalanx, but must eventually\
+ succumb to legionnaires. Meanwhile, it is useful for defending\
+ cities and fortifications, for guarding borders, and for attacks\
+ against most units.\
+\n\n\
+Unlike the standard game, this unit is equally competent in both\
+ attack and defense, since the tactics of ancient battles usually\
+ called for the two sides to charge one another, regardless of which\
+ side was the 'attacker' at the higher scale of operations.\
+")
+
+[unit_onager]
+name          = _("Onager")
+class         = "Land"
+tech_req      = "Invention"
+obsolete_by   = "None"
+graphic       = "u.onager"
+graphic_alt   = "u.catapult"
+sound_move    = "m_onager"
+sound_move_alt = "m_generic"
+sound_fight   = "f_onager"
+sound_fight_alt = "f_generic"
+build_cost    = 50
+pop_cost      = 0
+attack        = 4
+defense       = 1
+hitpoints     = 10
+firepower     = 4
+move_rate     = 1
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = "OneAttack", "IgWall"
+roles         = "AttackStrong"
+helptext      = _("\
+This unit is a battery of semi-portable stone throwers.\
+\n\n\
+Onagers are more powerful in the attack than catapults, but are\
+ equally slow and still only marginally effective against cities and\
+ fortifications defended by the better types of infantry.\
+")
+
+[unit_legionaires]
+name          = _("Legionaires")
+class         = "Land"
+tech_req      = "Legion"
+obsolete_by   = "Warband"
+graphic       = "u.legionaires"
+graphic_alt   = "u.legion"
+sound_move    = "m_legionaires"
+sound_move_alt = "m_generic"
+sound_fight   = "f_legionaires"
+sound_fight_alt = "f_generic"
+build_cost    = 50
+pop_cost      = 0
+attack        = 5
+defense       = 5
+hitpoints     = 20
+firepower     = 2
+move_rate     = 2
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = ""
+roles         = "DefendGood", "AttackStrong"
+helptext      = _("\
+This unit represents a Roman legion.\
+\n\n\
+These are the toughest infantry in the game until near the end of\
+ our period, and expensive in proportion. Use them for both attack\
+ and defense. The will often be useful even against fortified\
+ positions, though you may still find an onager preferable.\
+\n\n\
+Unlike the standard game, this unit is equally competent in both\
+ attack and defense, since the tactics of ancient battles usually\
+ called for the two sides to charge one another, regardless of which\
+ side was the 'attacker' at the higher scale of operations.\
+")
+
+[unit_men_at_arms]
+name          = _("Men-at-Arms")
+class         = "Land"
+tech_req      = "Feudalism"
+obsolete_by   = "None"
+graphic       = "u.men_at_arms"
+graphic_alt   = "u.legion"
+sound_move    = "m_men_at_arms"
+sound_move_alt = "m_generic"
+sound_fight   = "f_men_at_arms"
+sound_fight_alt = "f_generic"
+build_cost    = 50
+pop_cost      = 0
+attack        = 5
+defense       = 5
+hitpoints     = 20
+firepower     = 2
+move_rate     = 2
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = ""
+roles         = "DefendGood", "AttackStrong"
+helptext      = _("\
+This unit is a body of heavily armed and armored infantry from\
+ the High Middle Ages in Europe.\
+\n\n\
+Men-at-Arms are excellent at both attack and defense, but are quite\
+ expensive for infantry, so you may want to pad out your army with\
+ cheaper supporting units.\
+")
+
+[unit_halberdiers]
+name          = _("Halberdiers")
+class         = "Land"
+tech_req      = "Medieval Republic"
+obsolete_by   = "None"
+graphic       = "u.halberdiers"
+graphic_alt   = "u.pikemen"
+sound_move    = "m_halberdiers"
+sound_move_alt = "m_generic"
+sound_fight   = "f_halberdiers"
+sound_fight_alt = "f_generic"
+build_cost    = 60
+pop_cost      = 0
+attack        = 6
+defense       = 6
+hitpoints     = 20
+firepower     = 2
+move_rate     = 2
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = "Pikemen"
+roles         = "DefendGood", "AttackStrong"
+helptext      = _("\
+This unit, available near the end of the period represented by the\
+ Ancients modpack, represents a highly disciplined formation of\
+ halberdiers and/or pikemen such as those from the Netherlands or the\
+ early Swiss republics.\
+\n\n\
+Halberdiers will cut most other infantry units into small ribbons,\
+ and woe unto the mounted unit foolish enough to charge them! Use\
+ them for attack, defense, and mopping up what remains of any enemy\
+ army foolish enough to invade after you have the technology to\
+ build these.\
+")
+
+[unit_skirmishers]
+name          = _("Skirmishers")
+class         = "Land"
+tech_req      = "Archery"
+obsolete_by   = "None"
+graphic       = "u.skirmishers"
+graphic_alt   = "u.warriors"
+sound_move    = "m_skirmishers"
+sound_move_alt = "m_generic"
+sound_fight   = "f_skirmishers"
+sound_fight_alt = "f_generic"
+build_cost    = 10
+pop_cost      = 0
+attack        = 1
+defense       = 1
+hitpoints     = 10
+firepower     = 1
+move_rate     = 3
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = ""
+roles         = "Hut", "Barbarian", "BarbarianBuild", "BarbarianSea"
+helptext      = _("\
+This unit represents a body of light troops armed with missle\
+ weapons such as bows or slings.\
+\n\n\
+Skirmishers are very weak, but cheap and fairly fast, so you will\
+ find them useful for scouting and pillaging. They can also provide\
+ a cheap tripwire along a border with an untrustworthy neighbor.\
+")
+
+[unit_light_cavalry]
+name          = _("Light Cavalry")
+class         = "Land"
+tech_req      = "Horseback Riding"
+obsolete_by   = "None"
+graphic       = "u.lightcavalry"
+graphic_alt   = "u.horsemen"
+sound_move    = "m_lightcavalry"
+sound_move_alt = "m_generic"
+sound_fight   = "f_lightcavalry"
+sound_fight_alt = "f_generic"
+build_cost    = 20
+pop_cost      = 0
+attack        = 1
+defense       = 1
+hitpoints     = 10
+firepower     = 1
+move_rate     = 4
+vision_radius_sq  = 5
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = "Horse", "IgZOC"
+roles         = "Hut", "Barbarian", "BarbarianBuild"
+helptext      = _("\
+This unit is a body of lightly armed horsemen.\
+\n\n\
+Light cavalry is cheap, fast, and weak, and thus appropriate for\
+ scouting, pillaging, and harassing enemy settlers, explorers, and\
+ caravans.\
+")
+
+[unit_early_chariots]
+name          = _("Early Chariots")
+class         = "Land"
+tech_req      = "Crude Wheel"
+obsolete_by   = "Later Chariots"
+graphic       = "u.earlychariots"
+graphic_alt   = "u.chariot"
+sound_move    = "m_earlychariots"
+sound_move_alt = "m_generic"
+sound_fight   = "f_earlychariots"
+sound_fight_alt = "f_generic"
+build_cost    = 60
+pop_cost      = 0
+attack        = 3
+defense       = 1
+hitpoints     = 10
+firepower     = 1
+move_rate     = 2
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = ""
+roles         = "AttackStrong", "Hut", "Barbarian", "BarbarianBuild"
+helptext      = _("\
+This unit represents a body of crude chariots from the period\
+ before the invention of the spoked wheel, possibly drawn by \
+ semi-wild asses rather than horses.\
+\n\n\
+Use early chariots as an assault unit early in the game, but notice\
+ that they are slow and fragile compared to later models, so do not\
+ expect them to last long in combat. They are also quite expensive\
+ compared to most of the other units available early on, but may be\
+ your only option for a heavy assault unit. Do not attempt to use\
+ them in a defensive role.\
+")
+
+[unit_heavy_cavalry]
+name          = _("Heavy Cavalry")
+class         = "Land"
+tech_req      = "Saddle"
+obsolete_by   = "None"
+graphic       = "u.heavycavalry"
+graphic_alt   = "u.cavalry"
+sound_move    = "m_heavycavalry"
+sound_move_alt = "m_generic"
+sound_fight   = "f_heavycavalry"
+sound_fight_alt = "f_generic"
+build_cost    = 60
+pop_cost      = 0
+attack        = 3
+defense       = 3
+hitpoints     = 20
+firepower     = 2
+move_rate     = 3
+vision_radius_sq  = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = "Horse"
+roles         = "AttackFast", "Hunter", "BarbarianBuildTech"
+helptext      = _("\
+This unit is a large body of cavalry partially equiped with body\
+ armor and charging with javelins or spears wielded over the\
+ shoulder.\
+\n\n\
+Heavy cavalry is faster than the heavier infantry types and stronger\
+ than the lighter infantry types. It runs down light cavalry, but is\
+ run down in turn by cataphracts and knights.\
+\n\n\
+Use heavy cavalry for mobile operations and fast reserves, to chase\
+ off enemy light cavalry, or to pad out your hyper-expensive\
+ collection of knights or cataphracts. Avoid tangling with pikemen,\
+ legionnaires, and halberdiers, or even with lesser infantry types\
+ when they are in fortified positions.\
+")
+
+[unit_later_chariots]
+name          = _("Later Chariots")
+class         = "Land"
+tech_req      = "Improved Wheel"
+obsolete_by   = "Early Lancers"
+graphic       = "u.laterchariots"
+graphic_alt   = "u.chariot"
+sound_move    = "m_laterchariots"
+sound_move_alt = "m_generic"
+sound_fight   = "f_earlychariots"
+sound_fight_alt = "f_generic"
+build_cost    = 100
+pop_cost      = 0
+attack        = 5
+defense       = 3
+hitpoints     = 20
+firepower     = 2
+move_rate     = 3
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = ""
+roles         = "AttackFast", "Hunter"
+helptext      = _("\
+familiar from Hollywood's depictions, with a generally lighter but\
+ more robust design than those used in the earlier part of our\
+ period.\
+\n\n\
+Chariots are expensive, but fast and powerful in the assault. Use\
+ them to run down enemy forces in the open field until the time you\
+ are able to build lancers. Avoid attacking fortified positions, and\
+ do not let them be caught on the defensive.\
+")
+
+[unit_early_lancers]
+name          = _("Early Lancers")
+class         = "Land"
+tech_req      = "Stirrup"
+obsolete_by   = "Knights"
+graphic       = "u.earlylancers"
+graphic_alt   = "u.cavalry"
+sound_move    = "m_earlylancers"
+sound_move_alt = "m_generic"
+sound_fight   = "f_earlylancers"
+sound_fight_alt = "f_generic"
+build_cost    = 100
+pop_cost      = 0
+attack        = 5
+defense       = 3
+hitpoints     = 10
+firepower     = 4
+move_rate     = 3
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = "Horse"
+roles         = "AttackFast", "Hunter"
+helptext      = _("\
+This unit is a large body of horsemen who fight by charging with\
+ the lance, but who are less heavily armed and armored than the\
+ cataphracts and knights of a slightly later period.\
+\n\n\
+Early lancers are deadly on the attack, but expensive and somewhat\
+ fragile, so pad your army out with cheaper types and save these\
+ for the attacks that really count.\
+")
+
+[unit_knights]
+name          = _("Knights")
+class         = "Land"
+tech_req      = "Chivalry"
+obsolete_by   = "None"
+graphic       = "u.knights"
+graphic_alt   = "-"
+sound_move    = "m_knights"
+sound_move_alt = "m_generic"
+sound_fight   = "f_knights"
+sound_fight_alt = "f_generic"
+build_cost    = 140
+pop_cost      = 0
+attack        = 7
+defense       = 5
+hitpoints     = 20
+firepower     = 4
+move_rate     = 3
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = "Horse"
+roles         = "AttackFast", "Hunter"
+helptext      = _("\
+This unit is a large body of the heavily armored lancers common\
+ throughout most of Europe during the High Middle ages.\
+\n\n\
+Knights are expensive, but deadly. Use them to run down most\
+ other troop types in open terrain, but be wary of halberdiers, and\
+ use artillery instead when operating against fortified positions.\
+")
+
+[unit_elephants]
+name          = _("Elephants")
+class         = "Land"
+tech_req      = "Elephantry"
+obsolete_by   = "Legionaires"
+graphic       = "u.elephants"
+graphic_alt   = "-"
+sound_move    = "m_elephants"
+sound_move_alt = "m_generic"
+sound_fight   = "f_elephants"
+sound_fight_alt = "f_generic"
+build_cost    = 100
+pop_cost      = 0
+attack        = 5
+defense       = 3
+hitpoints     = 10
+firepower     = 4
+move_rate     = 2
+vision_radius_sq = 2
+transport_cap = 0
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = "Horse"
+roles         = "AttackStrong", "HutTech", "BarbarianTech", "BarbarianBuildTech"
+helptext      = _("\
+This unit is a smallish group of elephants decked out in spikes and\
+ leather to the envy of the most well-equiped punk rocker, and\
+ usually endowed with a howdah full of men with bows, javelins, or\
+ long spears.\
+\n\n\
+Elephants are superb in the assault, but expensive and somewhat\
+ fragile due to reduced hit points, so use them in the attacks that\
+ count. They can tromp down most units before the appearance of\
+ legionnaires, and may even be useful for smashing into cities that\
+ are not extremely well defended.\
+")
+
+[unit_boats]
+name          = _("Boats")
+class         = "Sea"
+tech_req      = "Boating"
+obsolete_by   = "Light Transport"
+graphic       = "u.boats"
+graphic_alt   = "u.trireme"
+sound_move    = "m_boats"
+sound_move_alt = "m_trireme"
+sound_fight   = "f_boats"
+sound_fight_alt = "f_trireme"
+build_cost    = 20
+pop_cost      = 0
+attack        = 0
+defense       = 1
+hitpoints     = 10
+firepower     = 1
+move_rate     = 1
+vision_radius_sq = 2
+transport_cap = 1
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = "Trireme", "BadCityDefender"
+roles         = "Ferryboat"
+helptext      = _("\
+This unit represents a small flotilla of simple boats.\
+\n\n\
+Boats are useless for sea combat, and quite slow, but they are\
+ useful for ferrying troops across straits. They can also get you\
+ an early start at exploring the fringes of your continent.\
+")
+
+[unit_warships]
+name          = _("Warships")
+class         = "Sea"
+tech_req      = "Sailing"
+obsolete_by   = "Triremes"
+graphic       = "u.warships"
+graphic_alt   = "u.trireme"
+sound_move    = "m_warships"
+sound_move_alt = "m_trireme"
+sound_fight   = "f_warships"
+sound_fight_alt = "f_trireme"
+build_cost    = 50
+pop_cost      = 0
+attack        = 1
+defense       = 1
+hitpoints     = 10
+firepower     = 1
+move_rate     = 3
+vision_radius_sq = 2
+transport_cap = 1
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = "Trireme", "BadCityDefender", "FieldUnit"
+roles         = "Ferryboat", "BarbarianBoat", "BarbarianBuildTech"
+helptext      = _("\
+This unit represents a small flotilla of warships of unspecified\
+ types in use before the invention of the sophisticated trireme and\
+ longboat types.\
+\n\n\
+Warships are pretty weak for sea combat, but should suffice for\
+ raiding enemy transports. Use them for piracy, small sealifts in\
+ coastal waters, or for exploring the fringes of the continent you\
+ start on.\
+")
+
+[unit_light_transport]
+name          = _("Light Transport")
+class         = "Sea"
+tech_req      = "Sailing"
+obsolete_by   = "None"
+graphic       = "u.lighttransport"
+graphic_alt   = "u.galleon"
+sound_move    = "m_lighttransport"
+sound_move_alt = "m_galleon"
+sound_fight   = "f_lighttransport"
+sound_fight_alt = "f_galleon"
+build_cost    = 40
+pop_cost      = 0
+attack        = 0
+defense       = 1
+hitpoints     = 10
+firepower     = 1
+move_rate     = 3
+vision_radius_sq = 2
+transport_cap = 3
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = "Trireme", "BadCityDefender"
+roles         = "Ferryboat"
+helptext      = _("\
+This unit represents a small flotilla of light merchant vessels.\
+\n\n\
+Transports are extremely vulnerable to predation by warships, but\
+ are useful for moving troops, diplomats, and caravans across straits\
+ and narrow seas. When transporting expensive units they should be\
+ stacked with a trireme or longboat for defense.\
+")
+
+[unit_heavy_transport]
+name          = _("Heavy Transport")
+class         = "Sea"
+tech_req      = "Map Making"
+obsolete_by   = "None"
+graphic       = "u.heavytransport"
+graphic_alt   = "u.galleon"
+sound_move    = "m_heavytransport"
+sound_move_alt = "m_galleon"
+sound_fight   = "f_heavytransport"
+sound_fight_alt = "f_galleon"
+build_cost    = 75
+pop_cost      = 0
+attack        = 0
+defense       = 1
+hitpoints     = 10
+firepower     = 1
+move_rate     = 3
+vision_radius_sq = 2
+transport_cap = 7
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = "Trireme", "BadCityDefender"
+roles         = "Ferryboat"
+helptext      = _("\
+This unit represents a small flotilla of heavy merchant vessels such\
+ as grain ships, which can be adapted for use as military transports.\
+\n\n\
+Transports are extremely vulnerable to predation by warships, but\
+ are useful for moving troops, diplomats, and caravans across straits\
+ and narrow seas. When transporting expensive stacks of units they\
+ should be stacked with a trireme or longboat in turn, for defense.\
+")
+
+[unit_longboats]
+name          = _("Longboats")
+class         = "Sea"
+tech_req      = "Dark Age"
+obsolete_by   = "None"
+graphic       = "u.longboats"
+graphic_alt   = "u.trireme"
+sound_move    = "m_longboats"
+sound_move_alt = "m_trireme"
+sound_fight   = "f_longboats"
+sound_fight_alt = "f_trireme"
+build_cost    = 75
+pop_cost      = 0
+attack        = 3
+defense       = 3
+hitpoints     = 20
+firepower     = 1
+move_rate     = 5
+vision_radius_sq = 2
+transport_cap = 2
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = "Trireme", "BadCityDefender", "FieldUnit"
+roles         = "Ferryboat", "BarbarianBoat", "BarbarianBuildTech", "AttackFast", "Hunter"
+helptext      = _("\
+This unit represents a small flotilla of longboats of the Viking\
+ type, or similar.\
+\n\n\
+Longboats are much more robust than ordinary warships, partly due to\
+ their speed and partly due to their heavily armed crews. However,\
+ though they can sink transports with ease they are not primarily\
+ designed for seaborne fighting, and should not try to tangle with\
+ triremes.\
+\n\n\
+Use longboats to sweep the seas clean of lesser ships and to conduct\
+ small raids, or use them en masse for a great seaborne invasion with\
+ your warbands, such as the Danish assault that ultimately captured\
+ most of England in Alfred's time.\
+")
+
+[unit_triremes]
+name          = _("Triremes")
+class         = "Sea"
+tech_req      = "Tactics"
+obsolete_by   = "Longboats"
+graphic       = "u.triremes"
+graphic_alt   = "u.trireme"
+sound_move    = "m_triremes"
+sound_move_alt = "m_trireme"
+sound_fight   = "f_triremes"
+sound_fight_alt = "f_trireme"
+build_cost    = 100
+pop_cost      = 0
+attack        = 3
+defense       = 3
+hitpoints     = 20
+firepower     = 4
+move_rate     = 5
+vision_range  = 1
+vision_radius_sq = 2
+transport_cap = 1
+fuel          = 0
+uk_happy      = 1
+uk_shield     = 1
+uk_food       = 0
+uk_gold       = 0
+flags         = "Trireme", "BadCityDefender", "FieldUnit"
+roles         = "Ferryboat", "AttackFast", "Hunter"
+helptext      = _("\
+This unit represents a small flotilla of triremes, a type of ancient\
+ warship propelled by three banks of oars and armed with a bronze\
+ ram. (Contrary to a mythology propagated by Hollywood, the oarsmen\
+ were invariably free men -- usually citizens. In some nations or\
+ periods the crew served as conventional infantry when needed, though\
+ FreeCiv does not provide a mechanism for modelling this.)\
+\n\n\
+Triremes are deadly predators on the seas, and can be used to keep\
+ 'your' sea clear of enemy transports and warships. Though their\
+ transport capacity is limited, they can be useful for providing a\
+ safe sea trip for a diplomat, explorer, or caravan.\
+")

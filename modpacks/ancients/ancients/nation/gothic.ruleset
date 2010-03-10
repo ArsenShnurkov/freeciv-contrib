@@ -1,0 +1,70 @@
+[nation_gothic]
+
+name   = _("Gothic")
+plural = _("?plural:Goths")
+groups  = _("European")
+
+legend = _("The Goths were a Germanic people\
+ who originated in what is now Poland.\
+ They dominated south east Europe in the fourth century AD.\
+ As the Visigoths the conquered Roman Iberia,\
+ and as the Ostrogoths they conquered Roman Italy.")
+
+leader =
+ "Athanaric",
+ "Ermenaric", ; legendary non-Roman Emperor
+ "Valamer", ; Ostrogoth, united the Gothic kingdoms
+ "Alaric", ; Visigoth, sacker of Rome
+ "Euric", ; Visigoth, conquerer of Iberia
+ "Theoderic the Great" ; Ostrogoth, Roman Emperor
+leader_sex = "Male", "Male", "Male", "Male", "Male", "Male"
+
+flag         = "gothic"
+flag_alt     = "poland" ; the Gothic homeland is now in Poland
+city_style   = "European"
+ruler_titles = { "government",      "male_title",       "female_title"
+                 "Republic",          _("Theod"),      _("Theod")
+                 "Imperial Monarchy", _("Reiks"),      _("Reiks")
+               }
+
+init_techs = ""
+init_buildings=""
+init_government="Despotism"
+init_units=""
+
+civilwar_nations= "german"
+
+cities =
+ ; See The Goths, P Heather, Blackwell 1991 for information.
+ ; The Goths were not an urban people before their Roman conquests,
+ ; so we have to use modern town names.
+ ;
+ ; Modern towns in the region of the early Wielbark Culture
+ "Gdańsk (ocean)",
+ "Bydgoszcz",
+ "Poznań",
+ ; Modern towns in the later, expanded, region of the Wielbark Culture
+ "Warszawa (river)",
+ "Lublin (!ocean)",
+ "Lviv (!ocean)",
+ ; Modern towns in the region of the Cernjachov Culture,
+ ; roughly NW to SE down to the Black Sea
+ "Chernivtsi (!ocean)",
+ "Vinnytsya",
+ "Iaşi",
+ "Odesa (ocean)",
+ ; Cernjachov political centres identified by archaeology
+ "Basmachka",
+ "Alexandovka",
+ "Novie Gorodok",
+ "Rumarov",
+ "Sovari",
+ ; Visigoth Aquitaine towns
+ "Bordeaux",
+ "Toulouse",
+ ; Modern Spanish towns in the region of Visigoth settlement
+ "Valladolid",
+ "Burgos",
+ "Palencia",
+ ; Important Ostrogoth towns
+ "Ravenna"

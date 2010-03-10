@@ -1,0 +1,84 @@
+Ancients 2.1.0-1
+
+Updated to work with Freeciv 2.1.0 series. (Tested with 2.1.0-beta4.)
+
+Based on Benedict Adamson's updated version:
+    http://rt.freeciv.org/Ticket/Display.html?id=14262.
+
+Many nations have been improved and some have been added.
+
+/Daniel Markstedt
+
+-------------------------------------
+Ancients 2.0.2
+
+Integrated the ft tileset into the Ancients package. This is the 'authors'
+section from the ft tileset readme file:
+
+   All is based on the great work from Tim Smith's HiRes Civ II Modpack
+	http://www.geocities.com/yoohootim/hires.htm 	
+   The city styles are a common work from F. Rodrigo and myself
+	http://f.rodrigo.free.fr
+   The unit graphics are from the HiRes, Trident and r-hires tilesets.
+   The nation shields are drawn by myself because the standard shields're too big.
+   Two ressource graphics from CapTVK
+	http://forum.freeciv.org/profile.php?mode=viewprofile&u=18
+   small tiles graphics from unkown poster in the Freeciv forum
+	http://forum.freeciv.org/viewtopic.php?t=553
+
+/Daniel Markstedt
+
+-------------------------------------
+Ancients 2.0.1
+
+This release is the joint effort of 'Dan' of the forums and myself.
+Ancients 2.0.0 didn't start on Freeciv 2.0.7 or later, hence the creation of 2.0.1.
+For installation and use, see the forums:
+ http://forum.freeciv.org/viewtopic.php?t=745
+
+Best regards,
+Daniel Markstedt
+
+-------------------------------------
+this is the ancients Ruleset 2.0.0
+i modified the original modpack from Bobby Briant to work with Freeciv 2.0
+during this work i recognized that the Ruleset structure has changed heavily since
+Freeciv 1.12 so it wasn't that easy i thought first :D
+the graphics aren't very good at the moment and especially for the ships i would need
+better ones - if anybody want to help me with that please write to <ft@uliq.net>
+
+better documentation will be added with 2.0.1
+
+please see the discussion on the Freeciv forums for more information
+or if you need help installing and using it
+ http://forum.freeciv.org/viewforum.php?f=9&sid=259ab14d4774542712e62bd3c3d4956a
+ 
+hope you enjoy it,
+regards,
+Franz
+
+documentation of the ancients.load file:
+
+; ancients ruleset; originally written by Bobby Bryant
+; modified for use with Freeciv 2.0 by Franz Mach
+; this is a just beta version for testing
+; please submit feedback, bugs and ideas to <ancients@uliq.net>
+
+;loading the ancients ruleset
+rulesetdir ancients/rset
+
+;setting the file savename
+set savename ancients
+
+;setting citymindist to 4
+;it's not recommended to change this to a lower settings
+;because the units in ancients are very fast and so it's an largebox game ;)
+set citymindist 4
+
+;starting with 10 players
+;you may change this
+set aifill 10
+
+;setting the AI to hard level
+;this is recommended because the AI isn't so strong as in standard rulesets
+hard

@@ -1,0 +1,38 @@
+[nation_hebrew]
+
+name=_("Hebrew")
+plural=_("?plural:Hebrews")
+groups=_("Asian"), _("Mediterranean")
+legend=_("The ancient Kingdom of Israel was founded around 1000 BC,\
+ but the first reference to the people of Israel was 200 years earlier.")
+leader=
+ "Moses",
+ "David",
+ "Solomon",
+ "Jezebel",
+ "Bar Kochba"
+leader_sex="Male", "Male", "Male", "Female", "Male"
+flag="israel"
+flag_alt = "-"
+city_style = "Babylonian"
+
+ruler_titles = { "government",      "male_title",      "female_title"
+               }
+
+init_techs=""
+init_buildings=""
+init_government="Despotism"
+init_units=""
+
+civilwar_nations = "arab"
+
+cities =
+  "Jerusalem", "Zephath", "Jericho", "Beersheba", "Gat", "Tiberias",
+  "Shchem", "Beit-El", "Beit-Horon", "Beit-Shemesh", "Beit-Shaan",
+  "Beit-Lechem", "Hevron", "Acre", "Ceisaria", "Jaffo", "Haifa",
+  "Rishon Le-Zion", "Beit-Shemen", "Rehovot", "Hadera", "Tel Aviv",
+  "Petach-Tikva", "Lod", "Eilat", "Herzliah",
+  "Netania", "Afulla", "Metula", "Dimona", "Carmiel", "Nazareth",
+  "Ra'anana", "Ramat-Gav", "Holon",
+  ; Philistine cities:
+  "Gaza", "Ashqelon", "Ashdod", "Ekron", "Gath"
