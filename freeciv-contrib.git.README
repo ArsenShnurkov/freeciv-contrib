@@ -1,0 +1,97 @@
+Written by Ulrik Sverdrup <ulrik.sverdrup@gmail.com>
+Updated March 2010
+
+Freeciv Contrib files tracking
+..............................
+
+This project tracks contrib files for the free empire-building game Freeciv.
+Contrib files are user-created files and other files that are not part of
+the main distribution.
+
+
+File hierarchy
+..............
+
+See the file preconfiguration.README for the meaning of different files.
+
+Currently we are tracking contrib files that are not soley about graphics,
+but have a textual content meaning and make sense to be progressively
+patched and developed. This means scenarios, maps, rulesets and to some
+exent tilesets. Other miscellaneous content that fits to these criteria is
+also welcome!
+
+
+Repository structure
+....................
+
+There are some scripts present in the repository to ease "building" the
+distribution version from the tracked files. These files should exist in all
+branches of the repository.
+
+  Branches
+----------
+  
+* master: master will track the CURRENT stable freeciv version
+* dev: (possible) will track the current developement version of freeciv
+
+* 2.1, 2.2: Each major freeciv version will have its branch in the repository.
+  They might initially be pretty empty, but it is welcome to start a porting
+  effort by introducing new files in any old or new branch.
+
+  Merging
+---------
+
+The merging order should be: Changes should be entered *as early as
+possible*: Check in the contribution to the oldest version it supports,
+for example Freeciv 2.1.  Bugfixes should also be checked in in an as
+old version as possible.
+
+Then we can merge upwards into relevant freeciv release branches, 2.1
+fixes merge into -> 2.2 etc.
+
+
+Working with the repository
+...........................
+  
+First, clone the repository::
+
+    git clone git://repo/url/here
+
+check out the branch you are interested in (if it is not master/current
+stable)::
+
+    git checkout -b mytopic origin/dev
+
+Make changes, edit. Test that they work. Commit to your local repository
+"git commit -a" as much as you want.
+
+if you have checked out with a username that allows pushing, you can push
+your changes to upstream with::
+
+    git push
+
+else you will want to make a series of patches that you can email to other
+developers::
+
+    git format-patch origin/master..
+
+
+Maintainers
+...........
+
+First, clone the git repository with a username that has push access::
+
+    git clone git://repo/url/here freeciv-contrib
+    cd freeciv-contrib
+
+To rebuild all distribution packages, run::
+
+    ./makedist.sh
+
+this will create a subhierarchy in dist/
+
+To rebuild a specific package you should be able to run::
+
+    ./makedist.sh path/to/package_or_pkg.spec
+
+This will place the file in the current directory

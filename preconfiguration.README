@@ -1,0 +1,107 @@
+Freeciv is a very configurable game.  Its look and feel and
+its behaviour can be changed in many ways; most are applied before
+playing starts, some can be applied while playing is in progress.
+The standard distribution comes with a small range of options;
+this directory offers a few more, contributed by users.
+Note that many items contributed here were created for old versions
+of Freeciv, and some may not work with newer versions.
+
+
+  Tilesets
+
+The appearance of the Freeciv map can be changed by choosing a different
+tileset.  A tileset is a set of images, one for every terrain type and
+for every unit type, some more e.g. to display roads and rivers, and
+one flag image for every nation there are some more tiles, for example,
+to display roads.  The standard distribution comes with two tilesets,
+one for isometric view, one for overhead view.
+
+The tilesets/ subdirectory provides a couple of alternative tilesets in
+various sizes.  Smaller tilesets are useful if you want to fit more of
+the map onto the same screen area.
+
+
+  Client settings
+
+Freeciv offers a few more options to customize the user interface:
+which messages are displayed and how, details on how cities are displayed,
+whether or not animation effects are used, etcetera.  "Save settings"
+can be used to make the current settings the defaults.
+
+
+  Server settings
+
+Freeciv is a client/server game.   The server holds the state of the game,
+and the details of how it is played; the client is used to present an
+interface to a user.  Tilesets and client settings only affect the
+interface and apply to individual users; server settings affect the game
+itself and apply to all players.
+
+Game playing has two phases.  In "pregame" state, users connect with their
+Freeciv clients to a Freeciv server, and configure details of how the
+game will run.  At some point, the game is started, every user picks a
+nation to play with, computer players are created and pick a nation,
+the map to play on is generated if necessary, initial units are created
+and positioned on the map, and the first turn starts.  From then on,
+the game is "running".
+
+The "initial" server settings, such as those influencing the map generation,
+determine what happens when the game is started; the other settings, such
+as the (optional) turn timeout, can still be changed while the game is
+already running.
+
+There is no graphical user interface for changing server settings; it must
+be done with the server command line.  The chatline in the Freeciv client
+can be used to issue commands, if the server is configured to allow this.
+
+A set of server settings can be saved to file to be reloaded in the
+next game.  The Freeciv servers on pubserver.freeciv.org, for example,
+run with various sets of nonstandard server settings that they load
+at startup.
+
+
+  Nations
+
+Additional nations can be added to Freeciv.  This requires information
+both on the server side (to allow users to select that nation) and
+in the tileset used on the client side (to display the nation's flag).
+Some additional nations are provided in the nations/ subdirectory.
+
+
+  Rulesets
+
+A ruleset is a set of files in a certain format that configures the set
+of terrain types, unit types, city improvement type, and technologies,
+with their behaviour, and a few more things.  A ruleset has a name,
+and can be loaded into a running server, but its contents cannot be
+inspected from the server, let alone edited.  Also, there is no GUI
+for creating rulesets; contents must be edited with a text editor.
+
+
+  Modpacks
+
+The standard Freeciv distribution comes with three rulesets: "default",
+"civ2", and "civ1", and tilesets that support these three.
+
+A modpack is a combination of a ruleset, usually a list of nations,
+and one or more tilesets to support displaying the new items defined.
+
+See the modpacks/ directory.
+
+
+  Maps, scenarios, and savegames.
+
+Freeciv can generate a map to play on when the game is started, but
+it can also be played on a predefined map.  Some maps are distributed
+with Freeciv, some more can be found in maps/.
+
+A scenario, in Freeciv, is a map pre-filled with units and/or cities
+belonging to particular nations.  See scenarios/
+
+A savegame is a state of the game saved while the game was running.
+Examples can be found on http://pubserver.freeciv.org/, which holds
+a database of over 20,000 games.
+
+Freeciv uses the same file format for all three, and handles them
+in the same way.  A map editor, Civworld (http://www.freecv.org/civworld/)
+is available for manual editing.
