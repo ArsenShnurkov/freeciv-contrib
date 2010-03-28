@@ -2,7 +2,7 @@
 [tilespec]
 
 ; Format and options of this tilespec file:
-options = "+tilespec4+2007.Oct.26"
+options = "+tilespec4+2007.Oct.26 duplicates_ok"
 
 ; A simple name for the tileset specified by this file:
 name = "ampcients"
@@ -66,11 +66,11 @@ files =
   "amplio/tiles.spec",
   "amplio/fog.spec",
   "misc/small.spec",
+  "amplio/units.spec",
   ; Amplio Ancients
   "ampcients/units.spec",
   "ampcients/ships.spec",
   ;
-  "amplio/units.spec",
   "misc/flags.spec",
   "amplio/buildings.spec",
   "amplio/wonders.spec",
